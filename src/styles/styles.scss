@@ -3,6 +3,14 @@
 @import "./variables.scss";
 @import "./generalStyles.scss";
 
+$hamburger-color:#FFF0D9;
+$hamburger-size:30.94px;
+$hamburger-thickness:5px;
+$hamburger-border-radius:2px;
+
+@import "~delicious-hamburgers/scss/base";
+@import "~delicious-hamburgers/scss/animations/stack";
+
 *{
     margin: 0px;
     padding: 0px;
@@ -32,3 +40,6 @@ h6{
 p{
     font-size: 16px;
 }
+
+@import "./components/home.scss";
+@import "./components/navbar.scss";

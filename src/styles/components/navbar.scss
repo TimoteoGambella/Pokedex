@@ -1,0 +1,16 @@
+.navbar-container{
+    background: #F5DB13;
+    box-shadow: 0px 4px 16px rgba(1, 28, 64, 0.2);
+    width: 100%;
+    .hamburger{
+        margin: auto 0px;
+        .bar2::before{
+            background-color: black !important;
+            border-radius: 2px !important;
+        }
+        .bar2-background{
+            background-color: black !important;
+            border-radius: 2px !important;
+        }
+    }
+}
