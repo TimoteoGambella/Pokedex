@@ -2,5 +2,7 @@
     background: linear-gradient(180deg, #F5DB13 0%, #F2B807 100%);
     display: flex;
     width: 100%;
-    
+    flex-direction: column;
+    padding-top: 102px;
+    min-height: 100vh;
 }
