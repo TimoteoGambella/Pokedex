@@ -1,20 +1,21 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import { Context } from "./context/Context";
+import {  ApiContext } from "./context/ApiContext";
 import Home from "./views/Home";
 import "./styles/styles.scss"
 
 function App() {
-  fetch("https://pokeapi.co/api/v2/pokemon/?offset=150").then((res)=>res.json().then((res)=>console.log(res)))
+
   return (
-    <Context>
+    <ApiContext>
       <BrowserRouter>
         <NavBar/>
         <Routes>
           <Route path="/" element={<Home />}/>
+          <Route path="/:generation" element={<Home />}/>
         </Routes>
       </BrowserRouter>
-    </Context>
+    </ApiContext>
   );
 }
 
