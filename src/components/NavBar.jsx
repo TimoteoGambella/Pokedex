@@ -32,7 +32,15 @@ export default function NavBar(){
                         <span className={`bar ${menuBar&&"bar2"}`}></span>
                     </div>
                 </button>
-
+                <div className={`menu ${openMenu?"open":"close"}`}>
+                    <img src={logo} alt="LOGO" />
+                    <div>
+                        <p>Pokedex</p>
+                        <p>Legendarios</p>
+                        <p>Generaciones</p>
+                    </div>
+                </div>
+                <div className={`fondoMenu ${openMenu?"open":"close"}`} onClick={()=>setOpenMenu(!openMenu)}></div>
         </div>
     )
 }
