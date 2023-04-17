@@ -46,11 +46,13 @@ export default function Pokedex({openMenu}){
                         }}
                     >
                         <div className="inner">
-                            <span className={`bar2`}></span>
-                            <span className={`bar2 bar2-background`}></span>
-                            <span className={`bar2`}></span>
+                            <span className={`bar bar2`}></span>
+                            <span className={`bar bar2 bar2-background`}></span>
+                            <span className={`bar bar2`}></span>
                         </div>
                     </button>
+                    
+
                 </div>
                 <div className={`fondoAlt ${openFilters?"open":"close"}`} onClick={()=>setOpenFilters(!openFilters)}></div>
             </div>
