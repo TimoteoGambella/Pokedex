@@ -24,6 +24,9 @@ export default function Home(){
     return(
         <div className="home-container">
             <img src={banner} alt="BANNER" />
+            <h2><span>Find</span> all your favorite <span>Pokemon</span></h2>
+            <h3>You can know the type of Pokemon, its strengths, disadvantages and abilities</h3>
+            <p>See Pokemons</p>
         </div>
     )
 }
