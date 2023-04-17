@@ -7,6 +7,7 @@ export const ApiContext = ({ children }) => {
 
     const [allPokes,setAllPokes]=useState([])
     const [allTypes,setAllTypes]=useState([])
+    const [allGenerations,setAllGenerations]=useState([])
     const [page,setPage]=useState(0)
 
     const apiPoke=async(url)=>{
@@ -22,12 +23,15 @@ export const ApiContext = ({ children }) => {
         if(allTypes.length===0){
             apiPoke(`https://pokeapi.co/api/v2/type`).then((res)=>setAllTypes(res))
         }
+        if(allTypes.length===0){
+            apiPoke(`https://pokeapi.co/api/v2/generation`).then((res)=>setAllGenerations(res))
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 console.log(allPokes)
 console.log(allTypes)
     return (
-        <UseApiContext.Provider value={{ colorsType, apiPoke, allPokes, page, setPage, allTypes }}>
+        <UseApiContext.Provider value={{ colorsType, apiPoke, allPokes, page, setPage, allTypes, allGenerations }}>
             {children}
         </UseApiContext.Provider>
     );
