@@ -4,11 +4,16 @@ import {  UseApiContext } from "../context/ApiContext";
 import SearchIcon from '@mui/icons-material/Search';
 import { SvgIcon } from "@mui/material";
 import FilterListIcon from '@mui/icons-material/FilterList';
+import radio from "../assets/radio.svg"
+import radio2 from "../assets/radio2.svg"
 
 export default function Pokedex({openMenu}){
-    const [openFilters,setOpenFilters]=useState(false)
+    const { allTypes } = useContext(UseApiContext)
 
+    const [openFilters,setOpenFilters]=useState(false)
     const [lupa,setLupa]=useState(false)
+    const [types,setTypes]=useState({})
+    const [reload,setReload]=useState(false)
 
     useEffect(() => {
         if(openMenu){
@@ -21,6 +26,22 @@ export default function Pokedex({openMenu}){
             }
         }
     }, [openMenu,lupa])
+
+    useEffect(() => {
+        if(allTypes.length!==0){
+            let objTypes={}
+            for (const key in allTypes.results) {
+                objTypes={...objTypes,[allTypes.results[key].name]:false}
+            }
+            setTypes(objTypes)
+        }
+    }, [allTypes])
+
+    useEffect(() => {
+        if(reload){
+            setReload(false)
+        }
+    }, [reload])
 
     return(
             <div className="pokedex-container">
@@ -52,7 +73,20 @@ export default function Pokedex({openMenu}){
                         </div>
                     </button>
                     
-
+                    <h3>Types</h3>
+                    <div className="types">
+                        {!reload && Object.keys(types).length !== 0 && allTypes.results.map((obj,i)=>{
+                            return(
+                                <div key={i} onClick={()=>{
+                                        setReload(true)
+                                        types[obj.name]=true
+                                    }}>
+                                    <img src={types[obj.name]?radio:radio2} alt="RADIOS" />
+                                    <p>{obj.name}</p>
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
                 <div className={`fondoAlt ${openFilters?"open":"close"}`} onClick={()=>setOpenFilters(!openFilters)}></div>
             </div>
