@@ -8,12 +8,12 @@ import radio from "../assets/radio.svg"
 import radio2 from "../assets/radio2.svg"
 
 export default function Pokedex({openMenu}){
-    const { allTypes } = useContext(UseApiContext)
+    const { allTypes, allGenerations } = useContext(UseApiContext)
 
     const [openFilters,setOpenFilters]=useState(false)
     const [lupa,setLupa]=useState(false)
     const [types,setTypes]=useState({})
-    const [reload,setReload]=useState(false)
+    const [generations,setGenerations]=useState({})
 
     useEffect(() => {
         if(openMenu){
@@ -35,14 +35,14 @@ export default function Pokedex({openMenu}){
             }
             setTypes(objTypes)
         }
-    }, [allTypes])
-
-    useEffect(() => {
-        if(reload){
-            setReload(false)
+        if(allGenerations.length!==0){
+            let objGenerations={}
+            for (const key in allGenerations.results) {
+                objGenerations={...objGenerations,[allGenerations.results[key].name]:false}
+            }
+            setGenerations(objGenerations)
         }
-    }, [reload])
-
+    }, [allTypes,allGenerations])
     return(
             <div className="pokedex-container">
                 <p className="banner">800 <span>Pokemons</span> for you to choose your favorite</p>
@@ -75,18 +75,28 @@ export default function Pokedex({openMenu}){
                     
                     <h3>Types</h3>
                     <div className="types">
-                        {!reload && Object.keys(types).length !== 0 && allTypes.results.map((obj,i)=>{
+                        {Object.keys(types).length !== 0 && allTypes.results.map((obj,i)=>{
                             return(
-                                <div key={i} onClick={()=>{
-                                        setReload(true)
-                                        types[obj.name]=true
-                                    }}>
+                                <div key={i} onClick={()=>setTypes({...types,[obj.name]:!types[obj.name]})}>
                                     <img src={types[obj.name]?radio:radio2} alt="RADIOS" />
-                                    <p>{obj.name}</p>
+                                    <p>{obj.name[0].toUpperCase()}{obj.name.slice(1)}</p>
                                 </div>
                             )
                         })}
                     </div>
+
+                    <h3>Generations</h3>
+                    <div className="generations">
+                        {Object.keys(generations).length !== 0 && allGenerations.results.map((obj,i)=>{
+                            return(
+                                <div key={i} onClick={()=>setGenerations({...generations,[obj.name]:!generations[obj.name]})}>
+                                    <img src={generations[obj.name]?radio:radio2} alt="RADIOS" />
+                                    <p>{obj.name[0].toUpperCase()}{obj.name.slice(1)}</p>
+                                </div>
+                            )
+                        })}
+                    </div>
+
                 </div>
                 <div className={`fondoAlt ${openFilters?"open":"close"}`} onClick={()=>setOpenFilters(!openFilters)}></div>
             </div>
