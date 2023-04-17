@@ -1,0 +1,57 @@
+.pokedex-container{
+    .banner{
+        font-family: 'Karla';
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 28px;
+        text-align: center;
+        letter-spacing: 3px;
+        margin: 18px;
+        margin-top: 85px;
+        margin-bottom: 0px;
+        span{
+            font-weight: 700;
+        }
+    }
+    .buscador{
+        padding: 0px 20px;
+        margin-top: 57px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        input{
+            all: unset;
+            width: 100%;
+            font-family: 'Source Sans Pro';
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 15px;
+            color: rgba(33, 33, 33, 0.8);
+            border: 1px solid rgb(192, 192, 192);
+            padding: 5px 40px 5px 10px;
+            border-radius: 15px;
+        }
+        .buscador-logo{
+            position: absolute;
+            right: 30px;
+            font-size: 28px;
+        }
+    }
+    .filtros{
+        display: flex;
+        align-items: center;
+        p{
+            font-family: 'Source Sans Pro';
+            font-weight: 400;
+            font-size: 22px;
+            line-height: 15px;
+            margin-top: 28px;
+            margin-left: 20px;
+        }
+        .filtros-logo{
+            margin-top: 28px;
+            margin-left: 5px;
+        }
+    }
+}
