@@ -12,20 +12,6 @@
         width: 59px;
         height: 22px;
     }
-    .hamburger{
-        margin: auto 0px;
-        .inner{
-            z-index: 10;
-        }
-        .bar2::before{
-            background-color: black !important;
-            border-radius: 2px !important;
-        }
-        .bar2-background{
-            background-color: black !important;
-            border-radius: 2px !important;
-        }
-    }
     .menu{
         position: fixed;
         top:0;
@@ -64,22 +50,6 @@
                 margin: 8px 0px;
                 text-align: center;
             }
-        }
-    }
-    .fondoMenu{
-        width: 100vw;
-        height: 110vh;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: #212121;
-        opacity: 0.5;
-        z-index: 1;
-        &.open{
-            display: block;
-        }
-        &.close{
-            display: none;
         }
     }
 }
