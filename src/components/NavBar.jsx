@@ -25,9 +25,9 @@ export default function NavBar({openMenu,setOpenMenu}){
                 }}
             >
                 <div className="inner">
-                    <span className={`bar2`}></span>
-                    <span className={`bar2 bar2-background`}></span>
-                    <span className={`bar2`}></span>
+                    <span className={`bar bar2`}></span>
+                    <span className={`bar bar2 bar2-background`}></span>
+                    <span className={`bar bar2`}></span>
                 </div>
             </button>
             <div className={`menu ${openMenu?"open":"close"}`}>
