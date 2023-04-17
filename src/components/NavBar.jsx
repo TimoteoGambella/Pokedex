@@ -37,7 +37,7 @@ export default function NavBar(){
                     <div>
                         <p>Pokedex</p>
                         <p>Legendarios</p>
-                        <p>Generaciones</p>
+                        <p>Sobre mí</p>
                     </div>
                 </div>
                 <div className={`fondoMenu ${openMenu?"open":"close"}`} onClick={()=>setOpenMenu(!openMenu)}></div>
