@@ -4,16 +4,18 @@ import {  ApiContext } from "./context/ApiContext";
 import Home from "./views/Home";
 import "./styles/styles.scss"
 import Pokedex from "./views/Pokedex";
+import { useState } from "react";
 
 function App() {
+  const [openMenu,setOpenMenu]=useState(false)
 
   return (
     <ApiContext>
       <BrowserRouter>
-        <NavBar/>
+        <NavBar openMenu={openMenu} setOpenMenu={setOpenMenu}/>
         <Routes>
           <Route path="/" element={<Home />}/>
-          <Route path="/pokedex" element={<Pokedex />}/>
+          <Route path="/pokedex" element={<Pokedex openMenu={openMenu} setOpenMenu={setOpenMenu}/>}/>
         </Routes>
       </BrowserRouter>
     </ApiContext>
