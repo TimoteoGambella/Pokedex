@@ -10,18 +10,14 @@ export default function Home(){
 
     const [generationPokes,setGenerationPokes]=useState([])
 
-    useEffect(() => {
-        if(generation!==undefined){
-            apiPoke(`https://pokeapi.co/api/v2/generation/${generation}`).then((res)=>setGenerationPokes(res))
-        }
+//     useEffect(() => {
+//         if(generation!==undefined){
+//             apiPoke(`https://pokeapi.co/api/v2/generation/${generation}`).then((res)=>setGenerationPokes(res))
+//         }
         
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    useEffect(() => {
-        console.log(allPokes)
-    }, [allPokes]);
-
+//         // eslint-disable-next-line react-hooks/exhaustive-deps
+//     }, []);
+// console.log(generationPokes)
     return(
         <div className="home-container">
             <img src={banner} alt="BANNER" />
