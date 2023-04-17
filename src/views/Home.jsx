@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {  UseApiContext } from "../context/ApiContext";
 import banner from "../assets/banner.svg"
 
 export default function Home(){
+    const navigate=useNavigate()
     const {generation}=useParams()
     const { colorsTypes, apiPoke, allPokes } = useContext(UseApiContext)
 
@@ -26,7 +27,7 @@ export default function Home(){
             <img src={banner} alt="BANNER" />
             <h2><span>Find</span> all your favorite <span>Pokemon</span></h2>
             <h3>You can know the type of Pokemon, its strengths, disadvantages and abilities</h3>
-            <p>See Pokemons</p>
+            <p onClick={()=>navigate("/pokedex")}>See Pokemons</p>
         </div>
     )
 }
