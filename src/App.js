@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar";
 import {  ApiContext } from "./context/ApiContext";
 import Home from "./views/Home";
 import "./styles/styles.scss"
+import Pokedex from "./views/Pokedex";
 
 function App() {
 
@@ -12,7 +13,7 @@ function App() {
         <NavBar/>
         <Routes>
           <Route path="/" element={<Home />}/>
-          <Route path="/:generation" element={<Home />}/>
+          <Route path="/pokedex" element={<Pokedex />}/>
         </Routes>
       </BrowserRouter>
     </ApiContext>
