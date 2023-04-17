@@ -46,9 +46,9 @@ export default function Pokedex({openMenu}){
                         }}
                     >
                         <div className="inner">
-                            <span className={`bar ${!lupa&&"bar2"}`}></span>
-                            <span className={`bar ${!lupa&&"bar2"} ${!lupa&&"bar2-background"}`}></span>
-                            <span className={`bar ${!lupa&&"bar2"}`}></span>
+                            <span className={`bar2`}></span>
+                            <span className={`bar2 bar2-background`}></span>
+                            <span className={`bar2`}></span>
                         </div>
                     </button>
                 </div>
