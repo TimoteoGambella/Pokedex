@@ -19,12 +19,22 @@ console.log(pokeInfo)
     return(
         <>
             {pokeInfo.length!==0 &&
-                <div className="card-container">
-                    <div className="fondo" style={{backgroundColor:colorsType.find(e=>e.name===pokeInfo.types[0].type.name).color}}>
-                        <h2>{pokeInfo.name}</h2>
+                <div className="card-container" style={{backgroundColor:colorsType.find(e=>e.name===pokeInfo.types[0].type.name).color}}>
+                    <div className="fondo">
+                        <h2>{pokeInfo.name[0].toUpperCase()}{pokeInfo.name.slice(1)}</h2>
                         <div className="stats">
-                            <div className="circle">{pokeInfo.stats.find(e=>e.stat.name==="attack").base_stat}</div>
-                            <div className="circle">{pokeInfo.stats.find(e=>e.stat.name==="defense").base_stat}</div>
+                            <div className="circle">
+                                <div>
+                                    {pokeInfo.stats.find(e=>e.stat.name==="attack").base_stat}
+                                </div>
+                                <p>Attack</p>
+                            </div>
+                            <div className="circle">
+                                <div>
+                                    {pokeInfo.stats.find(e=>e.stat.name==="defense").base_stat}
+                                </div>
+                                <p>Defense</p>
+                            </div>
                         </div>
                         <div className="types">
                             {pokeInfo.types.map((obj,i)=>{
@@ -32,7 +42,7 @@ console.log(pokeInfo)
                                     <>
                                         {i<2 &&
                                             <div style={{backgroundColor:colorsType.find(e=>e.name===obj.type.name).color}}>
-                                                {obj.type.name}
+                                                {obj.type.name[0].toUpperCase()}{obj.type.name.slice(1)}
                                             </div>
                                         }
                                     </>
