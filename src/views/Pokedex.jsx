@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-
 import SearchIcon from '@mui/icons-material/Search';
 import { SvgIcon } from "@mui/material";
 import FilterListIcon from '@mui/icons-material/FilterList';
