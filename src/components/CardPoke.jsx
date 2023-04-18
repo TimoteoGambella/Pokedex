@@ -20,7 +20,27 @@ console.log(pokeInfo)
         <>
             {pokeInfo.length!==0 &&
                 <div className="card-container">
-                    <div className="fondo" style={{backgroundColor:colorsType.find(e=>e.name===pokeInfo.types[0].type.name).color}}></div>
+                    <div className="fondo" style={{backgroundColor:colorsType.find(e=>e.name===pokeInfo.types[0].type.name).color}}>
+                        <h2>{pokeInfo.name}</h2>
+                        <div className="stats">
+                            <div className="circle">{pokeInfo.stats.find(e=>e.stat.name==="attack").base_stat}</div>
+                            <div className="circle">{pokeInfo.stats.find(e=>e.stat.name==="defense").base_stat}</div>
+                        </div>
+                        <div className="types">
+                            {pokeInfo.types.map((obj,i)=>{
+                                return(
+                                    <>
+                                        {i<2 &&
+                                            <div style={{backgroundColor:colorsType.find(e=>e.name===obj.type.name).color}}>
+                                                {obj.type.name}
+                                            </div>
+                                        }
+                                    </>
+                                )
+                            })}
+                        </div>
+                    </div>
+                    <img src={pokeInfo.sprites.front_default} alt={pokeInfo.name} />
                 </div>
             }
         </>

@@ -7,6 +7,8 @@
     filter: drop-shadow(4px 4px 4px rgba(33, 33, 33, 0.1));
     background: #F6F7F9;
     border-radius: 8px;
+    display: flex;
+    align-items: center;
     .fondo{
         width: 222px;
         position: absolute;
@@ -15,5 +17,9 @@
         right: 0;
         top: 0;
         border-radius: 0px 8px 8px 0px;
+    }
+    img{
+        width: 110px;
+        height: fit-content;
     }
 }
