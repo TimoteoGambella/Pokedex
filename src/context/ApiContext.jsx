@@ -28,8 +28,7 @@ export const ApiContext = ({ children }) => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-console.log(allPokes)
-console.log(allTypes)
+
     return (
         <UseApiContext.Provider value={{ colorsType, apiPoke, allPokes, page, setPage, allTypes, allGenerations }}>
             {children}

@@ -8,12 +8,12 @@ import radio from "../assets/radio.svg"
 import radio2 from "../assets/radio2.svg"
 
 export default function Pokedex({openMenu}){
-    const { allTypes, allGenerations } = useContext(UseApiContext)
+    const { allTypes, allGenerations, apiPoke } = useContext(UseApiContext)
 
     const [openFilters,setOpenFilters]=useState(false)
     const [lupa,setLupa]=useState(false)
-    const [types,setTypes]=useState({})
-    const [generations,setGenerations]=useState({})
+    const [types,setTypes]=useState("")
+    const [generations,setGenerations]=useState("")
 
     useEffect(() => {
         if(openMenu){
@@ -27,22 +27,6 @@ export default function Pokedex({openMenu}){
         }
     }, [openMenu,lupa])
 
-    useEffect(() => {
-        if(allTypes.length!==0){
-            let objTypes={}
-            for (const key in allTypes.results) {
-                objTypes={...objTypes,[allTypes.results[key].name]:false}
-            }
-            setTypes(objTypes)
-        }
-        if(allGenerations.length!==0){
-            let objGenerations={}
-            for (const key in allGenerations.results) {
-                objGenerations={...objGenerations,[allGenerations.results[key].name]:false}
-            }
-            setGenerations(objGenerations)
-        }
-    }, [allTypes,allGenerations])
     return(
             <div className="pokedex-container">
                 <p className="banner">800 <span>Pokemons</span> for you to choose your favorite</p>
@@ -75,10 +59,10 @@ export default function Pokedex({openMenu}){
                     
                     <h3>Types</h3>
                     <div className="types">
-                        {Object.keys(types).length !== 0 && allTypes.results.map((obj,i)=>{
+                        {allTypes.length !== 0 && allTypes.results.map((obj,i)=>{
                             return(
-                                <div key={i} onClick={()=>setTypes({...types,[obj.name]:!types[obj.name]})}>
-                                    <img src={types[obj.name]?radio:radio2} alt="RADIOS" />
+                                <div key={i} onClick={()=>setTypes(obj.name)}>
+                                    <img src={types===obj.name?radio:radio2} alt="RADIOST" />
                                     <p>{obj.name[0].toUpperCase()}{obj.name.slice(1)}</p>
                                 </div>
                             )
@@ -87,16 +71,28 @@ export default function Pokedex({openMenu}){
 
                     <h3>Generations</h3>
                     <div className="generations">
-                        {Object.keys(generations).length !== 0 && allGenerations.results.map((obj,i)=>{
+                        {allGenerations.length !== 0 && allGenerations.results.map((obj,i)=>{
                             return(
-                                <div key={i} onClick={()=>setGenerations({...generations,[obj.name]:!generations[obj.name]})}>
-                                    <img src={generations[obj.name]?radio:radio2} alt="RADIOS" />
+                                <div key={i} onClick={()=>setGenerations(obj.name)}>
+                                    <img src={generations===obj.name?radio:radio2} alt="RADIOSG" />
                                     <p>{obj.name[0].toUpperCase()}{obj.name.slice(1)}</p>
                                 </div>
                             )
                         })}
                     </div>
 
+                    <p className="button" onClick={async()=>{
+                        if(types!==""||generations!==""){
+                            if(types!==""&&generations!==""){
+                                await apiPoke(`https://pokeapi.co/api/v2/generation/${generations}`).then((res)=>console.log("OPCION 1",res))
+                            }else{
+                                await apiPoke(`https://pokeapi.co/api/v2/${types!==""?"type":"generation"}/${types!==""?types:generations}`).then((res)=>console.log("Opcion 2",res))
+                            }
+                            setOpenFilters(!openFilters)
+                        }else{
+                            setOpenFilters(!openFilters)
+                        }
+                    }}>Aplicar</p>
                 </div>
                 <div className={`fondoAlt ${openFilters?"open":"close"}`} onClick={()=>setOpenFilters(!openFilters)}></div>
             </div>
