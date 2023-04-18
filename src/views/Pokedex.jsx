@@ -3,6 +3,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { SvgIcon } from "@mui/material";
 import FilterListIcon from '@mui/icons-material/FilterList';
 import Filters from "../components/Filters";
+import CardsContent from "../components/CardsContent";
 
 
 export default function Pokedex({openMenu}){
@@ -47,6 +48,8 @@ export default function Pokedex({openMenu}){
                     setGenerations={setGenerations}
                     setPokesFilter={setPokesFilter}
                 />
+
+                <CardsContent pokesFilter={pokesFilter}/>
 
                 <div className={`fondoAlt ${openFilters?"open":"close"}`} onClick={()=>setOpenFilters(!openFilters)}></div>
             </div>
