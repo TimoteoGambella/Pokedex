@@ -29,7 +29,7 @@ export default function Filters({openFilters,setOpenFilters,types,setTypes,gener
             <div className="types">
                 {allTypes.length !== 0 && allTypes.results.map((obj,i)=>{
                     return(
-                        <div key={i} onClick={()=>setTypes(obj.name)}>
+                        <div key={i} onClick={()=>types===obj.name?setTypes(""):setTypes(obj.name)}>
                             <img src={types===obj.name?radio:radio2} alt="RADIOST" />
                             <p>{obj.name[0].toUpperCase()}{obj.name.slice(1)}</p>
                         </div>
@@ -41,7 +41,7 @@ export default function Filters({openFilters,setOpenFilters,types,setTypes,gener
             <div className="generations">
                 {allGenerations.length !== 0 && allGenerations.results.map((obj,i)=>{
                     return(
-                        <div key={i} onClick={()=>setGenerations(obj.name)}>
+                        <div key={i} onClick={()=>generations===obj.name?setGenerations(""):setGenerations(obj.name)}>
                             <img src={generations===obj.name?radio:radio2} alt="RADIOSG" />
                             <p>{obj.name[0].toUpperCase()}{obj.name.slice(1)}</p>
                         </div>
@@ -61,6 +61,10 @@ export default function Filters({openFilters,setOpenFilters,types,setTypes,gener
                     setOpenFilters(!openFilters)
                 }
             }}>Aplicar</p>
+            <p className="button2" onClick={()=>{
+                setTypes("")
+                setGenerations("")
+            }}>Limpiar filtros</p>
         </div>  
     )
 }
