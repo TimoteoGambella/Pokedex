@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { Fragment, useContext, useEffect, useState } from "react"
 import { UseApiContext } from "../context/ApiContext"
 import { colorsType } from '../context/colors';
 
@@ -15,7 +15,7 @@ export default function CardPoke({poke,i,setCargando}){
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-console.log(pokeInfo)
+
     return(
         <>
             {pokeInfo.length!==0 &&
@@ -39,13 +39,13 @@ console.log(pokeInfo)
                         <div className="types">
                             {pokeInfo.types.map((obj,i)=>{
                                 return(
-                                    <>
+                                    <Fragment key={i}>
                                         {i<2 &&
                                             <div style={{backgroundColor:colorsType.find(e=>e.name===obj.type.name).color}}>
                                                 {obj.type.name[0].toUpperCase()}{obj.type.name.slice(1)}
                                             </div>
                                         }
-                                    </>
+                                    </Fragment>
                                 )
                             })}
                         </div>
