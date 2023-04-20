@@ -26,6 +26,7 @@ export default function Pokedex({openMenu}){
             }
         }
     }, [openMenu,lupa])
+    console.log(types)
 
     return(
             <div className="pokedex-container">
