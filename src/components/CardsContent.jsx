@@ -15,7 +15,7 @@ export default function CardsContent({pokesFilter}){
                     </Fragment>
                 )
             })}
-            {pokesFilter.length!==0 && pokesFilter.results.map((obj,i)=>{
+            {pokesFilter.length!==0 && pokesFilter.pokemon_species.map((obj,i)=>{
                 return(
                     <Fragment key={i}>
                         <CardPoke poke={obj} i={i+1===allPokes.results.length} setCargando={setCargando}/>
