@@ -7,15 +7,25 @@ export default function CardPoke({poke,i,setCargando}){
     const { apiPoke } = useContext(UseApiContext)
 
     useEffect(() => {
-        apiPoke(poke.url).then((res)=>{
-            setPokeInfo(res)
-            if(i){
-                setCargando(false)
-            }
-        })
+        if(poke.url.indexOf("pokemon-species")!==-1){
+            let url=`${poke.url.substr(0,poke.url.indexOf("species")-1)}/${poke.url.substr(poke.url.indexOf("species")+8,poke.url.length)}`
+            apiPoke(url).then((res)=>{
+                console.log(res)
+                setPokeInfo(res)
+                if(i){
+                    setCargando(false)
+                }
+            })
+        }else{
+            apiPoke(poke.url).then((res)=>{
+                setPokeInfo(res)
+                if(i){
+                    setCargando(false)
+                }
+            })
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
     return(
         <>
             {pokeInfo.length!==0 &&
