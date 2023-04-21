@@ -143,4 +143,17 @@
             letter-spacing: 1px;
         }
     }
+    .loader{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 50vw;
+            height: 50vw;
+            max-width: 180px;
+            max-height: 180px;
+            margin-top: 50px;
+        }
+    }
 }
