@@ -54,16 +54,22 @@ export default function Filters({openFilters,setOpenFilters,types,setTypes,gener
                     if(types===""&&generations!==""){
                         await setPokesFilter([])
                         await apiPoke(`https://pokeapi.co/api/v2/generation/${generations}`).then((res)=>setPokesFilter(res))
+                    }else if(types!==""&&generations===""){
+                        await setPokesFilter([])
+                        await apiPoke(`https://pokeapi.co/api/v2/type/${types}`).then((res)=>setPokesFilter(res))
                     }else{
                         await setPokesFilter([])
-                        await apiPoke(`https://pokeapi.co/api/v2/${types!==""?"type":"generation"}/${types!==""?types:generations}`).then((res)=>setPokesFilter(res))
+                        await apiPoke(`https://pokeapi.co/api/v2/generation/${generations}`).then((res)=>setPokesFilter(res))
                     }
                     setOpenFilters(!openFilters)
                 }else{
+                    await setPokesFilter([])
                     setOpenFilters(!openFilters)
                 }
             }}>Aplicar</p>
             <p className="button2" onClick={()=>{
+                setOpenFilters(false)
+                setPokesFilter([])
                 setTypes("")
                 setGenerations("")
             }}>Limpiar filtros</p>

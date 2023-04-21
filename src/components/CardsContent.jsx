@@ -2,7 +2,7 @@ import { Fragment, useContext, useState } from "react"
 import { UseApiContext } from "../context/ApiContext"
 import CardPoke from "./CardPoke"
 
-export default function CardsContent({pokesFilter}){
+export default function CardsContent({pokesFilter,generations,types}){
     const { allPokes } = useContext(UseApiContext)
     const [cargando,setCargando]=useState(true)
 
@@ -15,7 +15,14 @@ export default function CardsContent({pokesFilter}){
                     </Fragment>
                 )
             })}
-            {pokesFilter.length!==0 && pokesFilter.pokemon_species.map((obj,i)=>{
+            {pokesFilter.length!==0 && pokesFilter.pokemon_species !== undefined && pokesFilter.pokemon_species.map((obj,i)=>{
+                return(
+                    <Fragment key={i}>
+                        <CardPoke poke={obj} i={i+1===allPokes.results.length} setCargando={setCargando} generations={generations} types={types} />
+                    </Fragment>
+                )
+            })}
+            {pokesFilter.length!==0 && pokesFilter.pokemon !== undefined && pokesFilter.pokemon.map((obj,i)=>{
                 return(
                     <Fragment key={i}>
                         <CardPoke poke={obj} i={i+1===allPokes.results.length} setCargando={setCargando}/>

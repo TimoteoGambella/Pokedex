@@ -2,27 +2,43 @@ import { Fragment, useContext, useEffect, useState } from "react"
 import { UseApiContext } from "../context/ApiContext"
 import { colorsType } from '../context/colors';
 
-export default function CardPoke({poke,i,setCargando}){
+export default function CardPoke({poke,i,setCargando,generations,types}){
     const [pokeInfo,setPokeInfo]=useState([])
     const { apiPoke } = useContext(UseApiContext)
 
     useEffect(() => {
-        if(poke.url.indexOf("pokemon-species")!==-1){
+        if(poke.url !== undefined && poke.url.indexOf("pokemon-species")!==-1){
             let url=`${poke.url.substr(0,poke.url.indexOf("species")-1)}/${poke.url.substr(poke.url.indexOf("species")+8,poke.url.length)}`
             apiPoke(url).then((res)=>{
-                console.log(res)
-                setPokeInfo(res)
-                if(i){
-                    setCargando(false)
+                if(generations!==""&&types!==""){
+                    for (const key in res.types) {
+                        if (res.types[key].type.name===types) {
+                            setPokeInfo(res)
+                        }
+                    }
+                }else{
+                    setPokeInfo(res)
+                    if(i){
+                        setCargando(false)
+                    }
                 }
             })
         }else{
-            apiPoke(poke.url).then((res)=>{
-                setPokeInfo(res)
-                if(i){
-                    setCargando(false)
-                }
-            })
+            if(poke.pokemon){
+                apiPoke(poke.pokemon.url).then((res)=>{
+                    setPokeInfo(res)
+                    if(i){
+                        setCargando(false)
+                    }
+                })
+            }else{
+                apiPoke(poke.url).then((res)=>{
+                    setPokeInfo(res)
+                    if(i){
+                        setCargando(false)
+                    }
+                })
+            }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

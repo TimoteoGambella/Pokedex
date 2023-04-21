@@ -26,7 +26,6 @@ export default function Pokedex({openMenu}){
             }
         }
     }, [openMenu,lupa])
-    console.log(types)
 
     return(
             <div className="pokedex-container">
@@ -50,7 +49,7 @@ export default function Pokedex({openMenu}){
                     setPokesFilter={setPokesFilter}
                 />
 
-                <CardsContent pokesFilter={pokesFilter}/>
+                <CardsContent pokesFilter={pokesFilter} generations={generations} types={types}/>
 
                 <div className={`fondoAlt ${openFilters?"open":"close"}`} onClick={()=>setOpenFilters(!openFilters)}></div>
             </div>
