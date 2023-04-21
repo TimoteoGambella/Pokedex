@@ -1,13 +1,8 @@
-import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {  UseApiContext } from "../context/ApiContext";
 import banner from "../assets/banner.svg"
 
 export default function Home(){
     const navigate=useNavigate()
-    const { colorsTypes, apiPoke, allPokes } = useContext(UseApiContext)
-
-    const [generationPokes,setGenerationPokes]=useState([])
 
     return(
         <div className="home-container">

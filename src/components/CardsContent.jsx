@@ -12,7 +12,7 @@ export default function CardsContent({pokesFilter,generations,types}){
                 <div className="loader">
                     <img src={loader} alt="LOADER"/>
                 </div>
-                :
+            :
                 <>
                     {pokesFilter.length===0 && allPokes.length!==0 && allPokes.results.map((obj,i)=>{
                         return(

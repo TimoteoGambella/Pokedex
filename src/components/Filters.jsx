@@ -51,6 +51,7 @@ export default function Filters({openFilters,setOpenFilters,types,setTypes,gener
 
             <p className="button" onClick={async()=>{
                 if(types!==""||generations!==""){
+                    
                     if(types===""&&generations!==""){
                         await setPokesFilter([])
                         await apiPoke(`https://pokeapi.co/api/v2/generation/${generations}`).then((res)=>setPokesFilter(res))
