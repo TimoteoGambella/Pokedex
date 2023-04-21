@@ -2,7 +2,7 @@ import { Fragment, useContext, useEffect, useState } from "react"
 import { UseApiContext } from "../context/ApiContext"
 import { colorsType } from '../context/colors';
 
-export default function CardPoke({poke,i,setCargando,generations,types}){
+export default function CardPoke({poke,i,generations,types}){
     const [pokeInfo,setPokeInfo]=useState([])
     const { apiPoke } = useContext(UseApiContext)
 
@@ -19,7 +19,7 @@ export default function CardPoke({poke,i,setCargando,generations,types}){
                 }else{
                     setPokeInfo(res)
                     if(i){
-                        setCargando(false)
+                        // setCargando(false)
                     }
                 }
             })
@@ -28,14 +28,14 @@ export default function CardPoke({poke,i,setCargando,generations,types}){
                 apiPoke(poke.pokemon.url).then((res)=>{
                     setPokeInfo(res)
                     if(i){
-                        setCargando(false)
+                        // setCargando(false)
                     }
                 })
             }else{
                 apiPoke(poke.url).then((res)=>{
                     setPokeInfo(res)
                     if(i){
-                        setCargando(false)
+                        // setCargando(false)
                     }
                 })
             }

@@ -1,19 +1,17 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import SearchIcon from '@mui/icons-material/Search';
 import { SvgIcon } from "@mui/material";
 import FilterListIcon from '@mui/icons-material/FilterList';
 import Filters from "../components/Filters";
 import CardsContent from "../components/CardsContent";
-import loader from "../assets/load1.gif"
-import { UseApiContext } from "../context/ApiContext";
 
 export default function Pokedex({openMenu}){
-    const { allPokes } = useContext(UseApiContext)
 
     const [openFilters,setOpenFilters]=useState(false)
     const [lupa,setLupa]=useState(false)
     const [types,setTypes]=useState("")
     const [generations,setGenerations]=useState("")
+    const [buscando,setBuscando]=useState(false)
 
     const [pokesFilter,setPokesFilter]=useState([])
 
@@ -49,15 +47,10 @@ export default function Pokedex({openMenu}){
                     generations={generations}
                     setGenerations={setGenerations}
                     setPokesFilter={setPokesFilter}
+                    setBuscando={setBuscando}
                 />
 
-                {allPokes.length === 0 ?
-                    <div className="loader">
-                        <img src={loader} alt="LOADER"/>
-                    </div>
-                    :
-                    <CardsContent pokesFilter={pokesFilter} generations={generations} types={types}/>
-                }
+                <CardsContent pokesFilter={pokesFilter} generations={generations} types={types}/>
 
                 <div className={`fondoAlt ${openFilters?"open":"close"}`} onClick={()=>setOpenFilters(!openFilters)}></div>
             </div>
