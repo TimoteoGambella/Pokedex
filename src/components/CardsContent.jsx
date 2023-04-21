@@ -3,12 +3,12 @@ import { UseApiContext } from "../context/ApiContext"
 import CardPoke from "./CardPoke"
 import loader from "../assets/load1.gif"
 
-export default function CardsContent({pokesFilter,generations,types}){
+export default function CardsContent({pokesFilter,generations,types,buscando}){
     const { allPokes } = useContext(UseApiContext)
 
     return(
         <div className="cards-container">
-            {allPokes.length===0 ?
+            {(allPokes.length===0 || buscando) ?
                 <div className="loader">
                     <img src={loader} alt="LOADER"/>
                 </div>

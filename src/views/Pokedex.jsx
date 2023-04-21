@@ -12,6 +12,7 @@ export default function Pokedex({openMenu}){
     const [types,setTypes]=useState("")
     const [generations,setGenerations]=useState("")
 
+    const [buscando,setBuscando]=useState(false)
     const [pokesFilter,setPokesFilter]=useState([])
 
     useEffect(() => {
@@ -46,9 +47,10 @@ export default function Pokedex({openMenu}){
                     generations={generations}
                     setGenerations={setGenerations}
                     setPokesFilter={setPokesFilter}
+                    setBuscando={setBuscando}
                 />
 
-                <CardsContent pokesFilter={pokesFilter} generations={generations} types={types}/>
+                <CardsContent pokesFilter={pokesFilter} generations={generations} types={types} buscando={buscando}/>
 
                 <div className={`fondoAlt ${openFilters?"open":"close"}`} onClick={()=>setOpenFilters(!openFilters)}></div>
             </div>

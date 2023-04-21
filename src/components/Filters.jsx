@@ -3,7 +3,7 @@ import { useContext } from "react";
 import radio from "../assets/radio.svg"
 import radio2 from "../assets/radio2.svg"
 
-export default function Filters({openFilters,setOpenFilters,types,setTypes,generations,setGenerations,setPokesFilter}){
+export default function Filters({openFilters,setOpenFilters,types,setTypes,generations,setGenerations,setPokesFilter,setBuscando}){
 
     const { allTypes, allGenerations, apiPoke } = useContext(UseApiContext)
 
@@ -50,8 +50,9 @@ export default function Filters({openFilters,setOpenFilters,types,setTypes,gener
             </div>
 
             <p className="button" onClick={async()=>{
+                await setBuscando(true)
                 if(types!==""||generations!==""){
-                    
+
                     if(types===""&&generations!==""){
                         await setPokesFilter([])
                         await apiPoke(`https://pokeapi.co/api/v2/generation/${generations}`).then((res)=>setPokesFilter(res))
@@ -67,6 +68,7 @@ export default function Filters({openFilters,setOpenFilters,types,setTypes,gener
                     await setPokesFilter([])
                     setOpenFilters(!openFilters)
                 }
+                setBuscando(false)
             }}>Aplicar</p>
             <p className="button2" onClick={()=>{
                 setOpenFilters(false)
