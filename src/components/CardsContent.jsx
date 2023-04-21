@@ -1,4 +1,4 @@
-import { Fragment, useContext, useState } from "react"
+import { Fragment, useContext } from "react"
 import { UseApiContext } from "../context/ApiContext"
 import CardPoke from "./CardPoke"
 import loader from "../assets/load1.gif"

@@ -11,7 +11,6 @@ export default function Pokedex({openMenu}){
     const [lupa,setLupa]=useState(false)
     const [types,setTypes]=useState("")
     const [generations,setGenerations]=useState("")
-    const [buscando,setBuscando]=useState(false)
 
     const [pokesFilter,setPokesFilter]=useState([])
 
@@ -47,7 +46,6 @@ export default function Pokedex({openMenu}){
                     generations={generations}
                     setGenerations={setGenerations}
                     setPokesFilter={setPokesFilter}
-                    setBuscando={setBuscando}
                 />
 
                 <CardsContent pokesFilter={pokesFilter} generations={generations} types={types}/>
