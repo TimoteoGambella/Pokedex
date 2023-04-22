@@ -156,4 +156,18 @@
             margin-top: 50px;
         }
     }
+    .paginador{
+        display: flex;
+        width: 80%;
+        margin: auto;
+        justify-content: space-between;
+        margin-top: 15px;
+        margin-bottom: 30px;
+        p{
+            font-family: "Source Sans Pro";
+            font-weight: 400;
+            font-size: 22px;
+            line-height: 15px;
+        }
+    }
 }

@@ -30,7 +30,7 @@ export const ApiContext = ({ children }) => {
     }, [])
 
     return (
-        <UseApiContext.Provider value={{ colorsType, apiPoke, allPokes, page, setPage, allTypes, allGenerations }}>
+        <UseApiContext.Provider value={{ colorsType, apiPoke, allPokes, page, setPage, allTypes, allGenerations, setAllPokes }}>
             {children}
         </UseApiContext.Provider>
     );
