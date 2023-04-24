@@ -32,34 +32,11 @@ export default function Pokedex({openMenu}){
         }
     }, [openMenu,lupa])
 
-    const buscador=async()=>{
-        await setPokesFilterBuscador([])
-        await setBuscando(true)
-        await fetch(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=99999`).then((res)=>res.json().then(async(res)=>{
-            let newArray=[]
-            for (const key in res.results) {
-                if (res.results[key].name.indexOf(document.getElementById("buscador").value)!==-1) {
-                    newArray.push(res.results[key])
-                }
-            }
-            if(newArray.length===0){
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Ops...',
-                    text: 'We did not find results. Try different name.',
-                  })
-            }else{
-                setPokesFilterBuscador(newArray)
-            }
-        }))
-        setBuscando(false)
-    }
-
     return(
             <div className="pokedex-container">
                 <p className="banner">800 <span>Pokemons</span> for you to choose your favorite</p>
 
-                <Buscador buscador={buscador} lupa={lupa} pokesFilterBuscador={pokesFilterBuscador} setPokesFilterBuscador={setPokesFilterBuscador}/>
+                <Buscador setBuscando={setBuscando} lupa={lupa} pokesFilterBuscador={pokesFilterBuscador} setPokesFilterBuscador={setPokesFilterBuscador}/>
 
                 <div className="filtros">
                     <p onClick={()=>setOpenFilters(!openFilters)}>Filtros</p>
