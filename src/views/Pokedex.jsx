@@ -5,6 +5,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import Filters from "../components/Filters";
 import CardsContent from "../components/CardsContent";
 import { UseApiContext } from "../context/ApiContext";
+import Swal from "sweetalert2";
 
 export default function Pokedex({openMenu}){
     const { allPokes, setAllPokes } = useContext(UseApiContext)
@@ -16,6 +17,7 @@ export default function Pokedex({openMenu}){
 
     const [buscando,setBuscando]=useState(false)
     const [pokesFilter,setPokesFilter]=useState([])
+    const [pokesFilterBuscador,setPokesFilterBuscador]=useState([])
 
     useEffect(() => {
         if(openMenu){
@@ -29,19 +31,35 @@ export default function Pokedex({openMenu}){
         }
     }, [openMenu,lupa])
 
-    const buscador=()=>{
-        // await setAllPokes([])
-        // await setBuscando(true)
-        // await fetch(`https://pokeapi.co/api/v2/pokemon/${e.target.value}/`).then((res)=>res.json().then((res)=>console.log(res)))
-        // setBuscando(false)
+    const buscador=async()=>{
+        await setPokesFilterBuscador([])
+        await setBuscando(true)
+        await fetch(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=99999`).then((res)=>res.json().then(async(res)=>{
+            let newArray=[]
+            for (const key in res.results) {
+                if (res.results[key].name.indexOf(document.getElementById("buscador").value)!==-1) {
+                    newArray.push(res.results[key])
+                }
+            }
+            if(newArray.length===0){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Ops...',
+                    text: 'We did not find results. Try different name.',
+                  })
+            }else{
+                setPokesFilterBuscador(newArray)
+            }
+        }))
+        setBuscando(false)
     }
-    
+
     return(
             <div className="pokedex-container">
                 <p className="banner">800 <span>Pokemons</span> for you to choose your favorite</p>
                 <div className="buscador">
                     <input id="buscador" type="text" placeholder="Encuentra tu pokemon..." onKeyPress={(e)=>{
-                        if(e.key==="Enter"){
+                        if(e.key==="Enter" && e.target.value.length>=3){
                             buscador()
                         }
                     }}/>
@@ -63,9 +81,9 @@ export default function Pokedex({openMenu}){
                     setBuscando={setBuscando}
                 />
 
-                <CardsContent pokesFilter={pokesFilter} generations={generations} types={types} buscando={buscando}/>
+                <CardsContent pokesFilterBuscador={pokesFilterBuscador} pokesFilter={pokesFilter} generations={generations} types={types} buscando={buscando}/>
 
-                {pokesFilter.length===0 && allPokes.length!==0 &&
+                {pokesFilter.length===0 && pokesFilterBuscador.length===0 && allPokes.length!==0 &&
                     <div className="paginador">
                         <p  style={{padding:allPokes.previous?"10px 20px":""}}
                             onClick={async()=>{
