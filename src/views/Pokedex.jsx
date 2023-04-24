@@ -1,14 +1,15 @@
 import { useContext, useEffect, useState } from "react";
-import SearchIcon from '@mui/icons-material/Search';
 import { SvgIcon } from "@mui/material";
 import FilterListIcon from '@mui/icons-material/FilterList';
 import Filters from "../components/Filters";
 import CardsContent from "../components/CardsContent";
 import { UseApiContext } from "../context/ApiContext";
 import Swal from "sweetalert2";
+import Buscador from "../components/Buscador";
+import Paginador from "../components/Paginador";
 
 export default function Pokedex({openMenu}){
-    const { allPokes, setAllPokes } = useContext(UseApiContext)
+    const { allPokes } = useContext(UseApiContext)
 
     const [openFilters,setOpenFilters]=useState(false)
     const [lupa,setLupa]=useState(false)
@@ -57,14 +58,9 @@ export default function Pokedex({openMenu}){
     return(
             <div className="pokedex-container">
                 <p className="banner">800 <span>Pokemons</span> for you to choose your favorite</p>
-                <div className="buscador">
-                    <input id="buscador" type="text" placeholder="Encuentra tu pokemon..." onKeyPress={(e)=>{
-                        if(e.key==="Enter" && e.target.value.length>=3){
-                            buscador()
-                        }
-                    }}/>
-                    <SvgIcon component={SearchIcon} className="buscador-logo" sx={{zIndex:lupa?-1:0}} onClick={()=>buscador()}/>
-                </div>
+
+                <Buscador buscador={buscador} lupa={lupa} pokesFilterBuscador={pokesFilterBuscador} setPokesFilterBuscador={setPokesFilterBuscador}/>
+
                 <div className="filtros">
                     <p onClick={()=>setOpenFilters(!openFilters)}>Filtros</p>
                     <SvgIcon component={FilterListIcon} className="filtros-logo" onClick={()=>setOpenFilters(!openFilters)}/>
@@ -84,28 +80,9 @@ export default function Pokedex({openMenu}){
 
                 <CardsContent pokesFilterBuscador={pokesFilterBuscador} pokesFilter={pokesFilter} generations={generations} types={types} buscando={buscando}/>
 
+
                 {pokesFilter.length===0 && pokesFilterBuscador.length===0 && allPokes.length!==0 &&
-                    <div className="paginador">
-                        <p  style={{padding:allPokes.previous?"10px 20px":""}}
-                            onClick={async()=>{
-                                document.getElementById("buscador").value=""
-                                await setAllPokes([])
-                                await setBuscando(true)
-                                await fetch(allPokes.previous).then((res)=>res.json().then((res)=>setAllPokes(res)))
-                                setBuscando(false)
-                            }}
-                        >{allPokes.previous?"Anterior":""}</p>
-                        
-                        <p  style={{padding:allPokes.next?"10px 20px":""}}
-                            onClick={async()=>{
-                                document.getElementById("buscador").value=""
-                                await setAllPokes([])
-                                await setBuscando(true)
-                                await fetch(allPokes.next).then((res)=>res.json().then((res)=>setAllPokes(res)))
-                                setBuscando(false)
-                            }}
-                        >{allPokes.next?"Siguiente":""}</p>
-                    </div>
+                    <Paginador setBuscando={setBuscando}/>
                 }
 
                 <div className={`fondoAlt ${openFilters?"open":"close"}`} onClick={()=>setOpenFilters(!openFilters)}></div>
