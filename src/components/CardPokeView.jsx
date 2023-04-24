@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function CardPokeView({}){
+export default function CardPokeView(){
     const [carga,setCarga]=useState(false)
 
     useEffect(() => {

@@ -13,38 +13,6 @@
             font-weight: 700;
         }
     }
-    .buscador{
-        padding: 0px 20px;
-        margin-top: 57px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        input{
-            all: unset;
-            width: 100%;
-            font-family: 'Source Sans Pro';
-            font-weight: 400;
-            font-size: 18px;
-            line-height: 15px;
-            color: rgba(33, 33, 33, 0.8);
-            border: 1px solid rgb(192, 192, 192);
-            padding: 5px 40px 5px 10px;
-            border-radius: 15px;
-        }
-        .buscador-logo{
-            position: absolute;
-            right: 30px;
-            font-size: 28px;
-        }
-    }
-    .limpiarBuscador{
-        margin-top: 10px;
-        margin-left: 30px;
-        font-size: 15px;
-        font-family: 'Source Sans Pro';
-        font-weight: 400;
-        line-height: 15px;
-    }
     .filtros{
         display: flex;
         align-items: center;
@@ -162,23 +130,6 @@
             max-width: 180px;
             max-height: 180px;
             margin-top: 50px;
-        }
-    }
-    .paginador{
-        display: flex;
-        width: 80%;
-        margin: auto;
-        justify-content: space-between;
-        margin-top: 15px;
-        margin-bottom: 30px;
-        p{
-            font-family: "Source Sans Pro";
-            font-weight: 400;
-            font-size: 22px;
-            line-height: 15px;
-            background: #73D677;
-            box-shadow: inset 0px -9px 0px rgba(0, 0, 0, 0.18);
-            border-radius: 11px;
         }
     }
 }
