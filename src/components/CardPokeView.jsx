@@ -9,6 +9,7 @@ export default function CardPokeView({}){
                setCarga(true) 
             }, 100);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return(
