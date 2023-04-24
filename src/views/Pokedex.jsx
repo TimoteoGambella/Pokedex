@@ -79,6 +79,7 @@ export default function Pokedex({openMenu}){
                     setGenerations={setGenerations}
                     setPokesFilter={setPokesFilter}
                     setBuscando={setBuscando}
+                    setPokesFilterBuscador={setPokesFilterBuscador}
                 />
 
                 <CardsContent pokesFilterBuscador={pokesFilterBuscador} pokesFilter={pokesFilter} generations={generations} types={types} buscando={buscando}/>

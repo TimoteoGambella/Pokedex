@@ -3,7 +3,7 @@ import { useContext } from "react";
 import radio from "../assets/radio.svg"
 import radio2 from "../assets/radio2.svg"
 
-export default function Filters({openFilters,setOpenFilters,types,setTypes,generations,setGenerations,setPokesFilter,setBuscando}){
+export default function Filters({openFilters,setOpenFilters,types,setTypes,generations,setGenerations,setPokesFilter,setBuscando,setPokesFilterBuscador}){
 
     const { allTypes, allGenerations, apiPoke } = useContext(UseApiContext)
 
@@ -53,7 +53,7 @@ export default function Filters({openFilters,setOpenFilters,types,setTypes,gener
                 document.getElementById("buscador").value=""
                 await setBuscando(true)
                 if(types!==""||generations!==""){
-
+                    setPokesFilterBuscador([])
                     if(types===""&&generations!==""){
                         await setPokesFilter([])
                         await apiPoke(`https://pokeapi.co/api/v2/generation/${generations}`).then((res)=>setPokesFilter(res))
