@@ -50,6 +50,7 @@ export default function Filters({openFilters,setOpenFilters,types,setTypes,gener
             </div>
 
             <p className="button" onClick={async()=>{
+                document.getElementById("buscador").value=""
                 await setBuscando(true)
                 if(types!==""||generations!==""){
 

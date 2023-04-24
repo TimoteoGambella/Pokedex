@@ -28,13 +28,24 @@ export default function Pokedex({openMenu}){
             }
         }
     }, [openMenu,lupa])
+
+    const buscador=()=>{
+        // await setAllPokes([])
+        // await setBuscando(true)
+        // await fetch(`https://pokeapi.co/api/v2/pokemon/${e.target.value}/`).then((res)=>res.json().then((res)=>console.log(res)))
+        // setBuscando(false)
+    }
     
     return(
             <div className="pokedex-container">
                 <p className="banner">800 <span>Pokemons</span> for you to choose your favorite</p>
                 <div className="buscador">
-                    <input type="text" placeholder="Encuentra tu pokemon..."/>
-                    <SvgIcon component={SearchIcon} className="buscador-logo" sx={{zIndex:lupa?-1:0}}/>
+                    <input id="buscador" type="text" placeholder="Encuentra tu pokemon..." onKeyPress={(e)=>{
+                        if(e.key==="Enter"){
+                            buscador()
+                        }
+                    }}/>
+                    <SvgIcon component={SearchIcon} className="buscador-logo" sx={{zIndex:lupa?-1:0}} onClick={()=>buscador()}/>
                 </div>
                 <div className="filtros">
                     <p onClick={()=>setOpenFilters(!openFilters)}>Filtros</p>
@@ -58,18 +69,23 @@ export default function Pokedex({openMenu}){
                     <div className="paginador">
                         <p  style={{padding:allPokes.previous?"10px 20px":""}}
                             onClick={async()=>{
-                            await setAllPokes([])
-                            await setBuscando(true)
-                            await fetch(allPokes.previous).then((res)=>res.json().then((res)=>setAllPokes(res)))
-                            setBuscando(false)
-                        }}>{allPokes.previous?"Anterior":""}</p>
+                                document.getElementById("buscador").value=""
+                                await setAllPokes([])
+                                await setBuscando(true)
+                                await fetch(allPokes.previous).then((res)=>res.json().then((res)=>setAllPokes(res)))
+                                setBuscando(false)
+                            }}
+                        >{allPokes.previous?"Anterior":""}</p>
+                        
                         <p  style={{padding:allPokes.next?"10px 20px":""}}
                             onClick={async()=>{
-                            await setAllPokes([])
-                            await setBuscando(true)
-                            await fetch(allPokes.next).then((res)=>res.json().then((res)=>setAllPokes(res)))
-                            setBuscando(false)
-                        }}>{allPokes.next?"Siguiente":""}</p>
+                                document.getElementById("buscador").value=""
+                                await setAllPokes([])
+                                await setBuscando(true)
+                                await fetch(allPokes.next).then((res)=>res.json().then((res)=>setAllPokes(res)))
+                                setBuscando(false)
+                            }}
+                        >{allPokes.next?"Siguiente":""}</p>
                     </div>
                 }
 
