@@ -4,7 +4,6 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import Filters from "../components/Filters";
 import CardsContent from "../components/CardsContent";
 import { UseApiContext } from "../context/ApiContext";
-import Swal from "sweetalert2";
 import Buscador from "../components/Buscador";
 import Paginador from "../components/Paginador";
 
