@@ -71,6 +71,7 @@ export default function Filters({openFilters,setOpenFilters,types,setTypes,gener
                 }
                 setBuscando(false)
             }}>Aplicar</p>
+            
             <p className="button2" onClick={()=>{
                 setOpenFilters(false)
                 setPokesFilter([])
