@@ -23,19 +23,12 @@ export default function CardPoke({poke,i,generations,types}){
                 }
             })
         }else{
-            if(poke.pokemon){
-                apiPoke(poke.pokemon.url).then((res)=>{
-                    setPokeInfo(res)
-                    if(i){
-                    }
-                })
-            }else{
-                apiPoke(poke.url).then((res)=>{
-                    setPokeInfo(res)
-                    if(i){
-                    }
-                })
-            }
+            apiPoke(poke.pokemon?poke.pokemon.url:poke.url).then((res)=>{
+                setPokeInfo(res)
+                if(i){
+                }
+            })
+            
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
