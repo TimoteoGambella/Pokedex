@@ -10,6 +10,8 @@ export default function CardPokeView({pokeInfo,setPokeView}){
     let hp_base_max=255
     let xp_base_max=635
 
+    let arrayStat=["Attack","Defense","special-attack","special-defense"]
+
     useEffect(() => {
         if(!carga){
             setTimeout(() => {
@@ -30,7 +32,10 @@ console.log(pokeInfo)
             }}
         >
             <img src={close} alt="CROSS" className="closeIcon" onClick={()=>{
-                setPokeView(false)
+                setCarga(false)
+                setTimeout(() => {
+                    setPokeView(false)
+                }, 2000);
             }}/>
 
             <h1>{pokeInfo.name[0].toUpperCase()}{pokeInfo.name.slice(1)}</h1>
@@ -71,19 +76,29 @@ console.log(pokeInfo)
             </div>
             <div className="thirdInfo">
                 <div>
-                    <p>Helthy Points</p>
+                    <p className="title">Helthy Points</p>
                     <div>
                         <p>{pokeInfo.stats[0].base_stat}</p>
-                        <ProgressBar labelColor="transparent" baseBgColor="#F6F7F9" bgColor="linear-gradient(270deg, #64D368 0.15%, #64D368 70.88%)" completed={`${Math.trunc(pokeInfo.stats[0].base_stat/hp_base_max*100)}`}/>
+                        <ProgressBar height="8px" labelColor="transparent" baseBgColor="#F6F7F9" bgColor="linear-gradient(270deg, #64D368 0.15%, #64D368 70.88%)" completed={`${Math.trunc(pokeInfo.stats[0].base_stat/hp_base_max*100)}`}/>
                     </div>
                 </div>
                 <div>
-                    <p>Experience</p>
+                    <p className="title">Experience</p>
                     <div>
                         <p>{pokeInfo.base_experience}</p>
-                        <ProgressBar labelColor="transparent" baseBgColor="#F6F7F9" bgColor="linear-gradient(180deg, #F5DB13 0%, #F2B807 100%)" completed={`${Math.trunc(pokeInfo.base_experience/xp_base_max*100)}`}/>
+                        <ProgressBar height="8px" labelColor="transparent" baseBgColor="#F6F7F9" bgColor="linear-gradient(180deg, #F5DB13 0%, #F2B807 100%)" completed={`${Math.trunc(pokeInfo.base_experience/xp_base_max*100)}`}/>
                     </div>
                 </div>
+            </div>
+            <div className="fourthInfo">
+                {arrayStat.map((obj,i)=>{
+                    return(
+                        <div key={i}>
+                            <p className="circle">{pokeInfo.stats[i+1].base_stat}</p>
+                            <p className="stat">{obj==="special-defense"?"SP Defense":obj==="special-attack"?"SP Attack":obj}</p>
+                        </div>
+                    )
+                })}
             </div>
         </div>
     )

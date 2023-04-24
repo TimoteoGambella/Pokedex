@@ -116,6 +116,61 @@
         max-width: 352px;
         padding: 20px;
         margin-top: 15px;
-        margin-bottom: 70px;
+        margin-bottom: 12px;
+        div{
+            margin-bottom: 21px;
+            .title{
+                font-family: 'Karla';
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 19px;
+                color: #000000;
+                margin-bottom: 4px;
+            }
+            div{
+                p{
+                    font-family: 'Karla';
+                    font-weight: 700;
+                    font-size: 16px;
+                    line-height: 19px;
+                    color: #000000;
+                    margin-bottom: 12px;
+                }
+            }
+        }
+    }
+    .fourthInfo{
+        display: flex;
+        margin-bottom: 60px;
+        justify-content: space-evenly;
+        width: 100%;
+        div{
+            background: #FDFDFD;
+            box-shadow: 4px 4px 24px rgba(1, 17, 38, 0.2);
+            border-radius: 8px;
+            padding: 8px 15px;
+            text-align: center;
+            .circle{
+                border-radius: 100%;
+                border: 2px solid black;
+                font-family: 'Karla';
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 21px;
+                padding: 4px 8px;
+                width: fit-content;
+
+                color: #212121;
+                margin: auto;
+            }
+            .stat{
+                margin-top: 2px;
+                font-family: 'Karla';
+                font-weight: 400;
+                font-size: 11px;
+                line-height: 13px;
+                color: #4B4B4B;
+            }
+        }
     }
 }
