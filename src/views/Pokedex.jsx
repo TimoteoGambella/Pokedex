@@ -56,18 +56,20 @@ export default function Pokedex({openMenu}){
 
                 {pokesFilter.length===0 && allPokes.length!==0 &&
                     <div className="paginador">
-                        <p onClick={async()=>{
+                        <p  style={{padding:allPokes.previous?"10px 20px":""}}
+                            onClick={async()=>{
                             await setAllPokes([])
                             await setBuscando(true)
                             await fetch(allPokes.previous).then((res)=>res.json().then((res)=>setAllPokes(res)))
                             setBuscando(false)
-                        }}>{allPokes.previous?"...Anterior":""}</p>
-                        <p onClick={async()=>{
+                        }}>{allPokes.previous?"Anterior":""}</p>
+                        <p  style={{padding:allPokes.next?"10px 20px":""}}
+                            onClick={async()=>{
                             await setAllPokes([])
                             await setBuscando(true)
                             await fetch(allPokes.next).then((res)=>res.json().then((res)=>setAllPokes(res)))
                             setBuscando(false)
-                        }}>{allPokes.next?"Siguiente...":""}</p>
+                        }}>{allPokes.next?"Siguiente":""}</p>
                     </div>
                 }
 
