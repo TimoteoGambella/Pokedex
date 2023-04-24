@@ -73,7 +73,7 @@ export default function CardPoke({poke,i,generations,types}){
                     <img src={pokeInfo.sprites.front_default} alt={pokeInfo.name} />
                 </div>
             }
-            {pokeView && <CardPokeView pokeInfo={pokeInfo}/>}
+            {pokeView && <CardPokeView pokeInfo={pokeInfo} setPokeView={setPokeView}/>}
         </>
     )
 }
