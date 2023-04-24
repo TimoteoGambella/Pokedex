@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
+import { colorsType } from '../context/colors';
 
-export default function CardPokeView(){
+export default function CardPokeView({pokeInfo}){
     const [carga,setCarga]=useState(false)
 
     useEffect(() => {
@@ -13,7 +14,7 @@ export default function CardPokeView(){
     }, []);
 
     return(
-        <div className={`cardPokeView-container ${carga?"open":"close"}`}>
+        <div className={`cardPokeView-container ${carga?"open":"close"}`} style={{backgroundColor:colorsType.find(e=>e.name===pokeInfo.types[0].type.name).color}}>
             
         </div>
     )
