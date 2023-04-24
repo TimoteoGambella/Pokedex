@@ -1,0 +1,16 @@
+.cardPokeView-container{
+    background-color: red;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+    &.close{
+        height: 0px;
+        transition: 2s;
+    }
+    &.open{
+        transition: 2s;
+        height: 105vh;
+    }
+}

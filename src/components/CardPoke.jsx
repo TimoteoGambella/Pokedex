@@ -1,10 +1,13 @@
 import { Fragment, useContext, useEffect, useState } from "react"
 import { UseApiContext } from "../context/ApiContext"
 import { colorsType } from '../context/colors';
+import CardPokeView from "./CardPokeView";
 
 export default function CardPoke({poke,i,generations,types}){
-    const [pokeInfo,setPokeInfo]=useState([])
     const { apiPoke } = useContext(UseApiContext)
+
+    const [pokeInfo,setPokeInfo]=useState([])
+    const [pokeView,setPokeView]=useState(false)
 
     useEffect(() => {
         if(poke.url !== undefined && poke.url.indexOf("pokemon-species")!==-1){
@@ -36,7 +39,7 @@ export default function CardPoke({poke,i,generations,types}){
     return(
         <>
             {pokeInfo.length!==0 &&
-                <div className="card-container" style={{backgroundColor:colorsType.find(e=>e.name===pokeInfo.types[0].type.name).color}}>
+                <div className="card-container" onClick={()=>setPokeView(!pokeView)} style={{backgroundColor:colorsType.find(e=>e.name===pokeInfo.types[0].type.name).color}}>
                     <div className="fondo">
                         <h2>{pokeInfo.name[0].toUpperCase()}{pokeInfo.name.slice(1)}</h2>
                         <div className="stats">
@@ -70,6 +73,7 @@ export default function CardPoke({poke,i,generations,types}){
                     <img src={pokeInfo.sprites.front_default} alt={pokeInfo.name} />
                 </div>
             }
+            {pokeView && <CardPokeView/>}
         </>
     )
 }
