@@ -42,7 +42,7 @@
             width: 100%;
             margin-top: 28px;
             p{
-                font-family: 'Roboto';
+                font-family: $fontRoboto;
                 font-weight: 400;
                 font-size: 27px;
                 line-height: 32px;
@@ -66,7 +66,7 @@
             justify-content: space-around;
             align-items: center;
             p{
-                font-family: 'Karla';
+                font-family: $fontKarla;
                 font-weight: 400;
                 font-size: 19px;
                 line-height: 22px;

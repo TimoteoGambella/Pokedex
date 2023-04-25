@@ -1,6 +1,6 @@
 .pokedex-container{
     .banner{
-        font-family: 'Karla';
+        font-family: $fontKarla;
         font-weight: 400;
         font-size: 24px;
         line-height: 28px;
@@ -17,7 +17,7 @@
         display: flex;
         align-items: center;
         p{
-            font-family: 'Source Sans Pro';
+            font-family: $fontSourceSansPro;
             font-weight: 400;
             font-size: 22px;
             line-height: 15px;
@@ -68,7 +68,7 @@
         }
         h3{
             margin-top: 34px;
-            font-family: 'Rubik';
+            font-family: $fontRubik;
             font-weight: 400;
             font-size: 23px;
             line-height: 27px;
@@ -87,7 +87,7 @@
                 display: flex;
                 p{
                     margin-bottom: 10px;
-                    font-family: 'Source Sans Pro';
+                    font-family: $fontSourceSansPro;
                     font-weight: 400;
                     font-size: 16px;
                     line-height: 20px;
