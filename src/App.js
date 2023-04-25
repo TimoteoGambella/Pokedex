@@ -5,6 +5,7 @@ import Home from "./views/Home";
 import "./styles/styles.scss"
 import Pokedex from "./views/Pokedex";
 import { useState } from "react";
+import Error from "./views/Error";
 
 function App() {
   const [openMenu,setOpenMenu]=useState(false)
@@ -15,6 +16,7 @@ function App() {
         <NavBar openMenu={openMenu} setOpenMenu={setOpenMenu}/>
         <Routes>
           <Route path="/" element={<Home />}/>
+          <Route path="/*" element={<Error />}/>
           <Route path="/pokedex" element={<Pokedex openMenu={openMenu} setOpenMenu={setOpenMenu}/>}/>
         </Routes>
       </BrowserRouter>
