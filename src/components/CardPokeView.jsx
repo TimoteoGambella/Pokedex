@@ -21,7 +21,7 @@ export default function CardPokeView({pokeInfo,setPokeView}){
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-console.log(pokeInfo)
+
     return(
         <div className={`cardPokeView-container ${carga?"open":"close"}`}
             style={{
