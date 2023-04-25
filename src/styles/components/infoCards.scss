@@ -4,6 +4,7 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
+        max-width: 400px;
         padding: 0px 30px;
         .box1{
             background: black;
@@ -91,6 +92,7 @@
         margin-bottom: 60px;
         justify-content: space-evenly;
         width: 100%;
+        max-width: 380px;
         div{
             background: #FDFDFD;
             box-shadow: 4px 4px 24px rgba(1, 17, 38, 0.2);
