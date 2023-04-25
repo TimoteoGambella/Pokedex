@@ -33,8 +33,8 @@ export default function NavBar({openMenu,setOpenMenu}){
                 <img onClick={()=>navegador("")} src={logo} alt="LOGO" />
                 <div>
                     <p onClick={()=>navegador("pokedex")}>Pokedex</p>
-                    <p onClick={()=>navegador("legendaries")}>Legendarios</p>
-                    <p>Sobre mí</p>
+                    {/* <p onClick={()=>navegador("legendaries")}>Legendarios</p> */}
+                    <p onClick={()=>window.open("timoteogambella.com.ar")}>Sobre mí</p>
                 </div>
             </div>
             <div className={`fondoAlt ${openMenu?"open":"close"}`} onClick={()=>setOpenMenu(!openMenu)}></div>
