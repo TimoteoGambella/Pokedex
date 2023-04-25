@@ -6,7 +6,7 @@ import "./styles/styles.scss"
 import Pokedex from "./views/Pokedex";
 import { useState } from "react";
 import Error from "./views/Error";
-import Legendarios from "./views/Legendarios";
+// import Legendarios from "./views/Legendarios";
 
 function App() {
   const [openMenu,setOpenMenu]=useState(false)
