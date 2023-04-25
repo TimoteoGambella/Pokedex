@@ -1,5 +1,5 @@
 .error-container{
-    background-color: #D93E30;
+    background-color: $danger-color;
     width: 100%;
     height: 100vh;
     display: flex;
@@ -38,7 +38,7 @@
         font-size: 17px;
         line-height: 20px;
         padding: 10px 40px;
-        color: #212121;
+        color: $black-color;
         margin-top: 45px;
     }
 }

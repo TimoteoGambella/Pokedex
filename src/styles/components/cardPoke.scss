@@ -5,7 +5,7 @@
     margin-top: 12px;
     margin-bottom: 12px;
     filter: drop-shadow(4px 4px 4px rgba(33, 33, 33, 0.1));
-    background: #F6F7F9;
+    background: $white-color;
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -13,7 +13,7 @@
         width: 222px;
         position: absolute;
         height: 100%;
-        background-color: #F6F7F9;
+        background-color: $white-color;
         right: 0;
         top: 0;
         border-radius: 0px 8px 8px 0px;
@@ -26,7 +26,7 @@
             font-weight: 700;
             font-size: 18px;
             line-height: 21px;
-            color: #212121;
+            color: $black-color;
             text-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1);
             margin-top: 8px;
             width: 90%;
@@ -41,14 +41,14 @@
                 align-items: center;
                 justify-content: center;
                 div{
-                    border: 3px solid #212121;
+                    border: 3px solid $black-color;
                     border-radius: 100%;
                     padding: 8px;
                     font-family: 'Karla';
                     font-weight: 400;
                     font-size: 16px;
                     line-height: 18px;
-                    color: #212121;
+                    color: $black-color;
                 }
                 p{
                     font-family: 'Karla';
@@ -73,7 +73,7 @@
                 letter-spacing: 1px;
                 font-size: 18px;
                 line-height: 14px;
-                color: #212121;
+                color: $black-color;
             }
         }
     }

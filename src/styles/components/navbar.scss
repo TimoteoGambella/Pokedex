@@ -1,5 +1,5 @@
 .navbar-container{
-    background: #F5DB13;
+    background: $third-color;
     box-shadow: 0px 4px 16px rgba(1, 28, 64, 0.2);
     width: 100%;
     display: flex;
@@ -70,7 +70,7 @@
                 font-weight: 400;
                 font-size: 19px;
                 line-height: 22px;
-                color: #212121;
+                color: $black-color;
                 margin: 10px 0px;
                 padding: 0px 8px 20px 8px;
             }
