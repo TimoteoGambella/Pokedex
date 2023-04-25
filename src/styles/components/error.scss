@@ -10,12 +10,14 @@
     img{
         width: 80%;
         z-index: 9;
+        max-width: 360px;
     }
     .banner404{
         position: absolute;
         z-index: 0;
         margin-top: 50px;
         width: 100%;
+        max-width: 460px;
     }
     p{
         font-family: 'Karla';
