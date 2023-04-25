@@ -6,6 +6,7 @@ import "./styles/styles.scss"
 import Pokedex from "./views/Pokedex";
 import { useState } from "react";
 import Error from "./views/Error";
+import Legendarios from "./views/Legendarios";
 
 function App() {
   const [openMenu,setOpenMenu]=useState(false)
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Home />}/>
           <Route path="/*" element={<Error />}/>
           <Route path="/pokedex" element={<Pokedex openMenu={openMenu} setOpenMenu={setOpenMenu}/>}/>
+          <Route path="/Legendaries" element={<Legendarios />}/>
         </Routes>
       </BrowserRouter>
     </ApiContext>

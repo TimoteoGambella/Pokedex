@@ -33,7 +33,7 @@ export default function NavBar({openMenu,setOpenMenu}){
                 <img onClick={()=>navegador("")} src={logo} alt="LOGO" />
                 <div>
                     <p onClick={()=>navegador("pokedex")}>Pokedex</p>
-                    <p>Legendarios</p>
+                    <p onClick={()=>navegador("legendaries")}>Legendarios</p>
                     <p>Sobre mí</p>
                 </div>
             </div>
