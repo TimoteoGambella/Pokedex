@@ -10,7 +10,7 @@ export default function Buscador({setBuscando,lupa,pokesFilterBuscador,setPokesF
         await fetch(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=99999`).then((res)=>res.json().then(async(res)=>{
             let newArray=[]
             for (const key in res.results) {
-                if (res.results[key].name.indexOf(document.getElementById("buscador").value)!==-1) {
+                if (res.results[key].name.indexOf(document.getElementById("buscador").value.toLowerCase())!==-1) {
                     newArray.push(res.results[key])
                 }
             }
