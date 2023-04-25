@@ -18,25 +18,24 @@ export default function Legendarios(){
 
     const [cargando,setCargando]=useState(true)
 
-    // useEffect(() => {
-    //     if(legendarios.length===0){
-    //         fetch(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=99999`).then((res)=>res.json().then(async(res)=>{
-    //             for (const key in res) {
-    //                 if (Object.hasOwnProperty.call(object, key)) {
-    //                     const element = object[key];
-                        
-    //                 }
-    //             }
-    //             // for (const key in arrayLegendarios) {
-    //             //     for (const key2 in arrayLegendarios[key].array) {
-    //             //         console.log(arrayLegendarios[key].array[key2])
-    //             //     }
-    //             // }
-    //         }))
-    //     }
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [])
-
+    useEffect(() => {
+        if(legendarios.length===0){
+            fetch(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=99999`).then((res)=>res.json().then(async(res)=>{
+                let newArray=[]
+                for (const key in res.results) {
+                    if(arrayLegendarios.indexOf(res.results[key].name)!==-1){
+                        newArray.push(res.results[key].name)
+                    }else{
+                        console.log(res.results[key].name)
+                    }
+                }
+                setLegendarios(newArray)
+                setCargando(false)
+            }))
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+    
     return(
         <div className="legendarios-container">
 

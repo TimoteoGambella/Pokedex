@@ -19,7 +19,7 @@ function App() {
           <Route path="/" element={<Home />}/>
           <Route path="/*" element={<Error />}/>
           <Route path="/pokedex" element={<Pokedex openMenu={openMenu} setOpenMenu={setOpenMenu}/>}/>
-          <Route path="/Legendaries" element={<Legendarios />}/>
+          {/* <Route path="/Legendaries" element={<Legendarios />}/> */}
         </Routes>
       </BrowserRouter>
     </ApiContext>
