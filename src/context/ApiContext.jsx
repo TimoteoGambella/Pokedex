@@ -1,9 +1,12 @@
 import { createContext, useEffect, useState } from 'react';
 import { colorsType } from './colors';
+import { useMediaQuery } from "@mui/material";
 
 export const UseApiContext = createContext();
 
 export const ApiContext = ({ children }) => {
+    const isTablet=useMediaQuery("(min-width:768px)")
+    const isDesktop=useMediaQuery("(min-width:1440px)")
 
     const [allPokes,setAllPokes]=useState([])
     const [allTypes,setAllTypes]=useState([])
@@ -30,7 +33,7 @@ export const ApiContext = ({ children }) => {
     }, [])
 
     return (
-        <UseApiContext.Provider value={{ colorsType, apiPoke, allPokes, page, setPage, allTypes, allGenerations, setAllPokes }}>
+        <UseApiContext.Provider value={{ isTablet,isDesktop, colorsType, apiPoke, allPokes, page, setPage, allTypes, allGenerations, setAllPokes }}>
             {children}
         </UseApiContext.Provider>
     );

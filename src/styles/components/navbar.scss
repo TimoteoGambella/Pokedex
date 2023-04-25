@@ -53,4 +53,27 @@
             }
         }
     }
+
+    &.tablet{
+        img{
+            width: 121px;
+            height: 45px;
+        }
+        div{
+            display: flex;
+            width: 70%;
+            margin: auto;
+            justify-content: space-around;
+            align-items: center;
+            p{
+                font-family: 'Karla';
+                font-weight: 400;
+                font-size: 19px;
+                line-height: 22px;
+                color: #212121;
+                margin: 10px 0px;
+                padding: 0px 8px 20px 8px;
+            }
+        }
+    }
 }
