@@ -33,7 +33,13 @@ export const ApiContext = ({ children }) => {
             })
         }
         if(allTypes.length===0){
-            apiPoke(`https://pokeapi.co/api/v2/generation`).then((res)=>setAllGenerations(res))
+            apiPoke(`https://pokeapi.co/api/v2/generation`).then((res)=>{
+                let newArray=[]
+                for (const key in res.results) {
+                    newArray.push({name:res.results[key].name})
+                }
+                setAllGenerations(newArray)
+            })
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

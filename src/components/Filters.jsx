@@ -40,7 +40,7 @@ export default function Filters({openFilters,setOpenFilters,types,setTypes,gener
 
                 <h3>Generations</h3>
                 <div className="generations">
-                    {allGenerations.length !== 0 && allGenerations.results.map((obj,i)=>{
+                    {allGenerations.length !== 0 && allGenerations.map((obj,i)=>{
                         return(
                             <div key={i} onClick={()=>generations===obj.name?setGenerations(""):setGenerations(obj.name)}>
                                 <img src={generations===obj.name?radio:radio2} alt="RADIOSG" />

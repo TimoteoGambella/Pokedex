@@ -9,7 +9,7 @@ import Paginador from "../components/Paginador";
 import Select from "react-dropdown-select";
 
 export default function Pokedex({openMenu}){
-    const { allPokes,allTypes,isTablet,isDesktop,apiPoke } = useContext(UseApiContext)
+    const { allPokes,allTypes,allGenerations,isTablet,isDesktop,apiPoke } = useContext(UseApiContext)
 
     const [openFilters,setOpenFilters]=useState(false)
     const [lupa,setLupa]=useState(false)
@@ -68,7 +68,7 @@ export default function Pokedex({openMenu}){
 
                 {!isTablet ?
                     <>
-                        <div className="filtros">
+                        <div className="filtrosM">
                             <p onClick={()=>setOpenFilters(!openFilters)}>Filtros</p>
                             <SvgIcon component={FilterListIcon} className="filtros-logo" onClick={()=>setOpenFilters(!openFilters)}/>
                         </div>
@@ -84,15 +84,29 @@ export default function Pokedex({openMenu}){
                         />
                     </>
                     :
-                    <div >
+                    <div className="filtrosT">
                         {allTypes.length!==0 &&
                             <Select
                                 options={allTypes}
                                 labelField="name"
                                 valueField="name"
                                 searchable={true}
+                                placeholder="Type"
                                 onChange={async(values) => {
                                     setTypes(values[0].name)
+                                    setFT(true)
+                                }}
+                            />
+                        }
+                        {allGenerations.length!==0 &&
+                            <Select
+                                options={allGenerations}
+                                labelField="name"
+                                valueField="name"
+                                searchable={true}
+                                placeholder="Generation"
+                                onChange={async(values) => {
+                                    setGenerations(values[0].name)
                                     setFT(true)
                                 }}
                             />
