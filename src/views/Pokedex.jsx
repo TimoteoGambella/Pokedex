@@ -21,6 +21,7 @@ export default function Pokedex({openMenu}){
     const [pokesFilterBuscador,setPokesFilterBuscador]=useState([])
 
     const [FT,setFT]=useState(false)
+    const [renderInput,setRenderInput]=useState(true)
 
     useEffect(() => {
         if(openMenu){
@@ -36,9 +37,18 @@ export default function Pokedex({openMenu}){
             setFT(false)
             buscadorFiltros()
         }
+        if(!renderInput){
+            setRenderInput(true)
+            buscadorFiltros()
+        }
+        if(isTablet || !isTablet){
+            setTypes("")
+            setGenerations("")
+            setPokesFilter([])
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [openMenu,lupa,FT])
-    
+    }, [openMenu,lupa,FT,renderInput,isTablet])
+
     const buscadorFiltros=async()=>{
         await setBuscando(true)
         if(types!==""||generations!==""){
@@ -83,33 +93,46 @@ export default function Pokedex({openMenu}){
                             buscadorFiltros={buscadorFiltros}
                         />
                     </>
-                    :
+                    :   
                     <div className="filtrosT">
-                        {allTypes.length!==0 &&
+                        {allTypes.length!==0 && renderInput &&
                             <Select
+                                className="inputsFilters"
                                 options={allTypes}
                                 labelField="name"
                                 valueField="name"
                                 searchable={true}
                                 placeholder="Type"
                                 onChange={async(values) => {
-                                    setTypes(values[0].name)
+                                    setTypes(values[0].name.toLowerCase())
                                     setFT(true)
                                 }}
                             />
                         }
-                        {allGenerations.length!==0 &&
+                        {allGenerations.length!==0 && renderInput &&
                             <Select
+                                className="inputsFilters"
                                 options={allGenerations}
                                 labelField="name"
                                 valueField="name"
                                 searchable={true}
                                 placeholder="Generation"
                                 onChange={async(values) => {
-                                    setGenerations(values[0].name)
+                                    setGenerations(values[0].name.toLowerCase())
                                     setFT(true)
                                 }}
                             />
+                        }
+                        {isTablet&&
+                            <p onClick={()=>{
+                                if(types.length!==0 || generations.length!==0){
+                                    setOpenFilters(false)
+                                    setPokesFilter([])
+                                    setTypes("")
+                                    setGenerations("")
+                                    setRenderInput(false)
+                                }
+                            }} style={{textDecoration:"underline"}}>Limpiar Filtros</p>
                         }
                     </div>
                 }

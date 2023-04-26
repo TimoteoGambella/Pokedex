@@ -30,9 +30,9 @@ export default function Filters({openFilters,setOpenFilters,types,setTypes,gener
                 <div className="types">
                     {allTypes.length !== 0 && allTypes.map((obj,i)=>{
                         return(
-                            <div key={i} onClick={()=>types===obj.name?setTypes(""):setTypes(obj.name)}>
-                                <img src={types===obj.name?radio:radio2} alt="RADIOST" />
-                                <p>{obj.name[0].toUpperCase()}{obj.name.slice(1)}</p>
+                            <div key={i} onClick={()=>types===obj.name?setTypes(""):setTypes(obj.name.toLowerCase())}>
+                                <img src={types===obj.name.toLowerCase()?radio:radio2} alt="RADIOST" />
+                                <p>{obj.name}</p>
                             </div>
                         )
                     })}
@@ -42,9 +42,9 @@ export default function Filters({openFilters,setOpenFilters,types,setTypes,gener
                 <div className="generations">
                     {allGenerations.length !== 0 && allGenerations.map((obj,i)=>{
                         return(
-                            <div key={i} onClick={()=>generations===obj.name?setGenerations(""):setGenerations(obj.name)}>
-                                <img src={generations===obj.name?radio:radio2} alt="RADIOSG" />
-                                <p>{obj.name[0].toUpperCase()}{obj.name.slice(1)}</p>
+                            <div key={i} onClick={()=>generations===obj.name?setGenerations(""):setGenerations(obj.name.toLowerCase())}>
+                                <img src={generations===obj.name.toLowerCase()?radio:radio2} alt="RADIOSG" />
+                                <p>{obj.name}</p>
                             </div>
                         )
                     })}
@@ -56,10 +56,12 @@ export default function Filters({openFilters,setOpenFilters,types,setTypes,gener
                 }}>Aplicar</p>
                 
                 <p className="button2" onClick={()=>{
-                    setOpenFilters(false)
-                    setPokesFilter([])
-                    setTypes("")
-                    setGenerations("")
+                    if(types.length!==0 || generations.length!==0){
+                        setOpenFilters(false)
+                        setPokesFilter([])
+                        setTypes("")
+                        setGenerations("")
+                    }
                 }}>Limpiar filtros</p>
             </div>
         </div>  

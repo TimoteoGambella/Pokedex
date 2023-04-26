@@ -27,7 +27,7 @@ export const ApiContext = ({ children }) => {
             apiPoke(`https://pokeapi.co/api/v2/type`).then((res)=>{
                 let newArray=[]
                 for (const key in res.results) {
-                    newArray.push({name:res.results[key].name})
+                    newArray.push({name:`${res.results[key].name[0].toUpperCase()}${res.results[key].name.slice(1)}`})
                 }
                 setAllTypes(newArray)
             })
@@ -36,7 +36,7 @@ export const ApiContext = ({ children }) => {
             apiPoke(`https://pokeapi.co/api/v2/generation`).then((res)=>{
                 let newArray=[]
                 for (const key in res.results) {
-                    newArray.push({name:res.results[key].name})
+                    newArray.push({name:`${res.results[key].name[0].toUpperCase()}${res.results[key].name.slice(1)}`})
                 }
                 setAllGenerations(newArray)
             })
