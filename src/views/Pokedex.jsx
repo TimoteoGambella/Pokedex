@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { SvgIcon } from "@mui/material";
 import FilterListIcon from '@mui/icons-material/FilterList';
-import Filters from "../components/Filters";
+import MenuFilters from "../components/MenuFilters";
 import CardsContent from "../components/CardsContent";
 import { UseApiContext } from "../context/ApiContext";
 import Buscador from "../components/Buscador";
@@ -82,7 +82,7 @@ export default function Pokedex({openMenu}){
                             <p onClick={()=>setOpenFilters(!openFilters)}>Filtros</p>
                             <SvgIcon component={FilterListIcon} className="filtros-logo" onClick={()=>setOpenFilters(!openFilters)}/>
                         </div>
-                        <Filters 
+                        <MenuFilters 
                             openFilters={openFilters} 
                             setOpenFilters={setOpenFilters}
                             types={types}

@@ -3,7 +3,7 @@ import { useContext } from "react";
 import radio from "../assets/radio.svg"
 import radio2 from "../assets/radio2.svg"
 
-export default function Filters({openFilters,setOpenFilters,types,setTypes,generations,setGenerations,setPokesFilter,buscadorFiltros}){
+export default function MenuFilters({openFilters,setOpenFilters,types,setTypes,generations,setGenerations,setPokesFilter,buscadorFiltros}){
 
     const { allTypes, allGenerations } = useContext(UseApiContext)
 
