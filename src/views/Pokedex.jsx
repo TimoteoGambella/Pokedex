@@ -6,9 +6,10 @@ import CardsContent from "../components/CardsContent";
 import { UseApiContext } from "../context/ApiContext";
 import Buscador from "../components/Buscador";
 import Paginador from "../components/Paginador";
+import Select from "react-dropdown-select";
 
 export default function Pokedex({openMenu}){
-    const { allPokes,isTablet,isDesktop } = useContext(UseApiContext)
+    const { allPokes,allTypes,isTablet,isDesktop,apiPoke } = useContext(UseApiContext)
 
     const [openFilters,setOpenFilters]=useState(false)
     const [lupa,setLupa]=useState(false)
@@ -18,6 +19,9 @@ export default function Pokedex({openMenu}){
     const [buscando,setBuscando]=useState(false)
     const [pokesFilter,setPokesFilter]=useState([])
     const [pokesFilterBuscador,setPokesFilterBuscador]=useState([])
+
+    const [filterAllTypes,setFilterAllTypes]=useState([])
+    const [FAL,setFAL]=useState(false)
 
     useEffect(() => {
         if(openMenu){
@@ -29,15 +33,48 @@ export default function Pokedex({openMenu}){
                 }, 1000);
             }
         }
-    }, [openMenu,lupa])
+        if(filterAllTypes.length===0){
+            let newArray=[]
+            for (const key in allTypes.results) {
+                newArray.push({name:allTypes.results[key].name})
+            }
+            setFilterAllTypes(newArray)
+        }
+        if(FAL){
+            setFAL(false)
+            buscadorFiltros()
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [openMenu,lupa,FAL,allTypes])
+    
+    const buscadorFiltros=async()=>{
+        await setBuscando(true)
+        if(types!==""||generations!==""){
+            document.getElementById("buscador").value=""
+            setPokesFilterBuscador([])
+            if(types===""&&generations!==""){
+                await setPokesFilter([])
+                await apiPoke(`https://pokeapi.co/api/v2/generation/${generations}`).then((res)=>setPokesFilter(res))
+            }else if(types!==""&&generations===""){
+                await setPokesFilter([])
+                await apiPoke(`https://pokeapi.co/api/v2/type/${types}`).then((res)=>setPokesFilter(res))
+            }else{
+                await setPokesFilter([])
+                await apiPoke(`https://pokeapi.co/api/v2/generation/${generations}`).then((res)=>setPokesFilter(res))
+            }
+        }else{
+            await setPokesFilter([])
+        }
+        setBuscando(false)
+    }
 
     return(
             <div className={`pokedex-container ${isTablet&&!isDesktop?"tablet":isDesktop?"desktop":""}`}>
                 <p className="banner">800 <span>Pokemons</span> for you to choose your favorite</p>
 
-                <Buscador setBuscando={setBuscando} lupa={lupa} pokesFilterBuscador={pokesFilterBuscador} setPokesFilterBuscador={setPokesFilterBuscador}/>
+                <Buscador setTypes={setTypes} setGenerations={setGenerations} setBuscando={setBuscando} lupa={lupa} pokesFilterBuscador={pokesFilterBuscador} setPokesFilterBuscador={setPokesFilterBuscador}/>
 
-                {!isTablet && !isDesktop &&
+                {!isTablet ?
                     <>
                         <div className="filtros">
                             <p onClick={()=>setOpenFilters(!openFilters)}>Filtros</p>
@@ -51,10 +88,24 @@ export default function Pokedex({openMenu}){
                             generations={generations}
                             setGenerations={setGenerations}
                             setPokesFilter={setPokesFilter}
-                            setBuscando={setBuscando}
-                            setPokesFilterBuscador={setPokesFilterBuscador}
+                            buscadorFiltros={buscadorFiltros}
                         />
                     </>
+                    :
+                    <div>
+                        {filterAllTypes.length!==0 &&
+                            <Select
+                                options={filterAllTypes}
+                                labelField="name"
+                                valueField="name"
+                                searchable={true}
+                                onChange={async(values) => {
+                                    await setTypes(values[0].name)
+                                    setFAL(true)
+                                }}
+                            />
+                        }
+                    </div>
                 }
 
 
