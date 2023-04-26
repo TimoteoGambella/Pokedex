@@ -2,7 +2,7 @@ import { SvgIcon } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import Swal from "sweetalert2";
 
-export default function Buscador({setBuscando,lupa,pokesFilterBuscador,setPokesFilterBuscador}){
+export default function Buscador({setTypes,setGenerations,setBuscando,lupa,pokesFilterBuscador,setPokesFilterBuscador}){
 
     const buscador=async()=>{
         await setPokesFilterBuscador([])
@@ -22,6 +22,8 @@ export default function Buscador({setBuscando,lupa,pokesFilterBuscador,setPokesF
                 })
                 document.getElementById("buscador").value=""
             }else{
+                setTypes("")
+                setGenerations("")
                 setPokesFilterBuscador(newArray)
             }
         }))
