@@ -31,12 +31,14 @@ export default function Buscador({setBuscando,lupa,pokesFilterBuscador,setPokesF
     return(
         <>
             <div className="buscador">
-                <input id="buscador" type="text" placeholder="Encuentra tu pokemon..." onKeyPress={(e)=>{
-                    if(e.key==="Enter" && e.target.value.length>=3){
-                        buscador()
-                    }
-                }}/>
-                <SvgIcon component={SearchIcon} className="buscador-logo" sx={{zIndex:lupa?-1:0}} onClick={()=>buscador()}/>
+                <div>
+                    <input id="buscador" type="text" placeholder="Encuentra tu pokemon..." onKeyPress={(e)=>{
+                        if(e.key==="Enter" && e.target.value.length>=3){
+                            buscador()
+                        }
+                    }}/>
+                    <SvgIcon component={SearchIcon} className="buscador-logo" sx={{zIndex:lupa?-1:0}} onClick={()=>buscador()}/>
+                </div>
             </div>
             {pokesFilterBuscador.length!==0 &&
                 <p className="limpiarBuscador" onClick={()=>{document.getElementById("buscador").value="";setPokesFilterBuscador([])}}>Limpiar buscador</p>

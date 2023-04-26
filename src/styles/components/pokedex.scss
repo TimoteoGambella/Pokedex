@@ -16,6 +16,8 @@
     .filtros{
         display: flex;
         align-items: center;
+        max-width: 500px;
+        margin: auto;
         p{
             font-family: $fontSourceSansPro;
             font-weight: 400;

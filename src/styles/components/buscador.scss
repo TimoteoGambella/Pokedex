@@ -1,25 +1,31 @@
 .buscador{
-    padding: 0px 20px;
-    margin-top: 57px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    input{
-        all: unset;
-        width: 100%;
-        font-family: $fontSourceSansPro;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 15px;
-        color: rgba(33, 33, 33, 0.8);
-        border: 1px solid rgb(192, 192, 192);
-        padding: 5px 40px 5px 10px;
-        border-radius: 15px;
-    }
-    .buscador-logo{
-        position: absolute;
-        right: 30px;
-        font-size: 28px;
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+    div{
+        padding: 0px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin-top: 57px;
+        input{
+            all: unset;
+            width: 100%;
+            font-family: $fontSourceSansPro;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 15px;
+            color: rgba(33, 33, 33, 0.8);
+            border: 1px solid rgb(192, 192, 192);
+            padding: 5px 40px 5px 10px;
+            border-radius: 15px;
+        }
+        .buscador-logo{
+            position: absolute;
+            right: 30px;
+            font-size: 28px;
+        }
     }
 }
 .limpiarBuscador{
