@@ -8,7 +8,7 @@ import Buscador from "../components/Buscador";
 import Paginador from "../components/Paginador";
 
 export default function Pokedex({openMenu}){
-    const { allPokes } = useContext(UseApiContext)
+    const { allPokes,isTablet,isDesktop } = useContext(UseApiContext)
 
     const [openFilters,setOpenFilters]=useState(false)
     const [lupa,setLupa]=useState(false)
@@ -32,7 +32,7 @@ export default function Pokedex({openMenu}){
     }, [openMenu,lupa])
 
     return(
-            <div className="pokedex-container">
+            <div className={`pokedex-container ${isTablet&&!isDesktop?"tablet":isDesktop?"desktop":""}`}>
                 <p className="banner">800 <span>Pokemons</span> for you to choose your favorite</p>
 
                 <Buscador setBuscando={setBuscando} lupa={lupa} pokesFilterBuscador={pokesFilterBuscador} setPokesFilterBuscador={setPokesFilterBuscador}/>
