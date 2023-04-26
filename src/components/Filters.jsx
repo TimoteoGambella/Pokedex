@@ -3,9 +3,9 @@ import { useContext } from "react";
 import radio from "../assets/radio.svg"
 import radio2 from "../assets/radio2.svg"
 
-export default function Filters({openFilters,setOpenFilters,types,setTypes,generations,setGenerations,setPokesFilter,setBuscando,setPokesFilterBuscador}){
+export default function Filters({openFilters,setOpenFilters,types,setTypes,generations,setGenerations,setPokesFilter,buscadorFiltros}){
 
-    const { allTypes, allGenerations, apiPoke } = useContext(UseApiContext)
+    const { allTypes, allGenerations } = useContext(UseApiContext)
 
     return(
         <div className={`filtros-menu ${openFilters?"open":"close"}`}>
@@ -51,26 +51,8 @@ export default function Filters({openFilters,setOpenFilters,types,setTypes,gener
                 </div>
 
                 <p className="button" onClick={async()=>{
-                    document.getElementById("buscador").value=""
-                    await setBuscando(true)
-                    if(types!==""||generations!==""){
-                        setPokesFilterBuscador([])
-                        if(types===""&&generations!==""){
-                            await setPokesFilter([])
-                            await apiPoke(`https://pokeapi.co/api/v2/generation/${generations}`).then((res)=>setPokesFilter(res))
-                        }else if(types!==""&&generations===""){
-                            await setPokesFilter([])
-                            await apiPoke(`https://pokeapi.co/api/v2/type/${types}`).then((res)=>setPokesFilter(res))
-                        }else{
-                            await setPokesFilter([])
-                            await apiPoke(`https://pokeapi.co/api/v2/generation/${generations}`).then((res)=>setPokesFilter(res))
-                        }
-                        setOpenFilters(!openFilters)
-                    }else{
-                        await setPokesFilter([])
-                        setOpenFilters(!openFilters)
-                    }
-                    setBuscando(false)
+                    await buscadorFiltros()
+                    setOpenFilters(!openFilters)
                 }}>Aplicar</p>
                 
                 <p className="button2" onClick={()=>{
