@@ -20,7 +20,7 @@ export default function Pokedex({openMenu}){
     const [pokesFilter,setPokesFilter]=useState([])
     const [pokesFilterBuscador,setPokesFilterBuscador]=useState([])
 
-    const [FAL,setFAL]=useState(false)
+    const [FT,setFT]=useState(false)
 
     useEffect(() => {
         if(openMenu){
@@ -32,12 +32,12 @@ export default function Pokedex({openMenu}){
                 }, 1000);
             }
         }
-        if(FAL){
-            setFAL(false)
+        if(FT){
+            setFT(false)
             buscadorFiltros()
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [openMenu,lupa,FAL])
+    }, [openMenu,lupa,FT])
     
     const buscadorFiltros=async()=>{
         await setBuscando(true)
@@ -92,8 +92,8 @@ export default function Pokedex({openMenu}){
                                 valueField="name"
                                 searchable={true}
                                 onChange={async(values) => {
-                                    await setTypes(values[0].name)
-                                    setFAL(true)
+                                    setTypes(values[0].name)
+                                    setFT(true)
                                 }}
                             />
                         }
