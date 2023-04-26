@@ -28,7 +28,7 @@ export default function Filters({openFilters,setOpenFilters,types,setTypes,gener
                 
                 <h3>Types</h3>
                 <div className="types">
-                    {allTypes.length !== 0 && allTypes.results.map((obj,i)=>{
+                    {allTypes.length !== 0 && allTypes.map((obj,i)=>{
                         return(
                             <div key={i} onClick={()=>types===obj.name?setTypes(""):setTypes(obj.name)}>
                                 <img src={types===obj.name?radio:radio2} alt="RADIOST" />

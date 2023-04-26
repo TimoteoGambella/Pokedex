@@ -20,7 +20,6 @@ export default function Pokedex({openMenu}){
     const [pokesFilter,setPokesFilter]=useState([])
     const [pokesFilterBuscador,setPokesFilterBuscador]=useState([])
 
-    const [filterAllTypes,setFilterAllTypes]=useState([])
     const [FAL,setFAL]=useState(false)
 
     useEffect(() => {
@@ -33,19 +32,12 @@ export default function Pokedex({openMenu}){
                 }, 1000);
             }
         }
-        if(filterAllTypes.length===0){
-            let newArray=[]
-            for (const key in allTypes.results) {
-                newArray.push({name:allTypes.results[key].name})
-            }
-            setFilterAllTypes(newArray)
-        }
         if(FAL){
             setFAL(false)
             buscadorFiltros()
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [openMenu,lupa,FAL,allTypes])
+    }, [openMenu,lupa,FAL])
     
     const buscadorFiltros=async()=>{
         await setBuscando(true)
@@ -93,9 +85,9 @@ export default function Pokedex({openMenu}){
                     </>
                     :
                     <div>
-                        {filterAllTypes.length!==0 &&
+                        {allTypes.length!==0 &&
                             <Select
-                                options={filterAllTypes}
+                                options={allTypes}
                                 labelField="name"
                                 valueField="name"
                                 searchable={true}

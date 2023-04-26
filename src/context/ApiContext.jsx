@@ -24,7 +24,13 @@ export const ApiContext = ({ children }) => {
             apiPoke(`https://pokeapi.co/api/v2/pokemon`).then((res)=>setAllPokes(res))
         }
         if(allTypes.length===0){
-            apiPoke(`https://pokeapi.co/api/v2/type`).then((res)=>setAllTypes(res))
+            apiPoke(`https://pokeapi.co/api/v2/type`).then((res)=>{
+                let newArray=[]
+                for (const key in res.results) {
+                    newArray.push({name:res.results[key].name})
+                }
+                setAllTypes(newArray)
+            })
         }
         if(allTypes.length===0){
             apiPoke(`https://pokeapi.co/api/v2/generation`).then((res)=>setAllGenerations(res))
