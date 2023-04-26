@@ -16,7 +16,6 @@ export default function Legendarios(){
     ]
     const [legendarios,setLegendarios]=useState([])
 
-    const [cargando,setCargando]=useState(true)
 
     useEffect(() => {
         if(legendarios.length===0){
@@ -30,7 +29,6 @@ export default function Legendarios(){
                     }
                 }
                 setLegendarios(newArray)
-                setCargando(false)
             }))
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

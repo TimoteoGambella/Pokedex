@@ -84,7 +84,7 @@ export default function Pokedex({openMenu}){
                         />
                     </>
                     :
-                    <div>
+                    <div >
                         {allTypes.length!==0 &&
                             <Select
                                 options={allTypes}
