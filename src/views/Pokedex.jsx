@@ -37,22 +37,26 @@ export default function Pokedex({openMenu}){
 
                 <Buscador setBuscando={setBuscando} lupa={lupa} pokesFilterBuscador={pokesFilterBuscador} setPokesFilterBuscador={setPokesFilterBuscador}/>
 
-                <div className="filtros">
-                    <p onClick={()=>setOpenFilters(!openFilters)}>Filtros</p>
-                    <SvgIcon component={FilterListIcon} className="filtros-logo" onClick={()=>setOpenFilters(!openFilters)}/>
-                </div>
+                {!isTablet && !isDesktop &&
+                    <>
+                        <div className="filtros">
+                            <p onClick={()=>setOpenFilters(!openFilters)}>Filtros</p>
+                            <SvgIcon component={FilterListIcon} className="filtros-logo" onClick={()=>setOpenFilters(!openFilters)}/>
+                        </div>
+                        <Filters 
+                            openFilters={openFilters} 
+                            setOpenFilters={setOpenFilters}
+                            types={types}
+                            setTypes={setTypes}
+                            generations={generations}
+                            setGenerations={setGenerations}
+                            setPokesFilter={setPokesFilter}
+                            setBuscando={setBuscando}
+                            setPokesFilterBuscador={setPokesFilterBuscador}
+                        />
+                    </>
+                }
 
-                <Filters 
-                    openFilters={openFilters} 
-                    setOpenFilters={setOpenFilters}
-                    types={types}
-                    setTypes={setTypes}
-                    generations={generations}
-                    setGenerations={setGenerations}
-                    setPokesFilter={setPokesFilter}
-                    setBuscando={setBuscando}
-                    setPokesFilterBuscador={setPokesFilterBuscador}
-                />
 
                 <CardsContent pokesFilterBuscador={pokesFilterBuscador} pokesFilter={pokesFilter} generations={generations} types={types} buscando={buscando}/>
 
