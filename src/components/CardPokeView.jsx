@@ -11,16 +11,12 @@ export default function CardPokeView({pokeInfo,setPokeView}){
     const { isTablet,isDesktop } = useContext(UseApiContext)
 
     const [carga,setCarga]=useState(false)
-    const [cargaOverflow,setCargaOverflow]=useState(true)
 
     useEffect(() => {
         if(!carga){
             setTimeout(() => {
                setCarga(true) 
             }, 100);
-            setTimeout(() => {
-                setCargaOverflow(false)
-            }, 2000);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
