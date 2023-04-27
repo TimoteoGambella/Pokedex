@@ -36,10 +36,10 @@ export default function CardPoke({poke,i,generations,types}){
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    
+    console.log(pokeInfo)
     return(
         <>
-            {pokeInfo.length!==0 &&
+            {pokeInfo.length!==0 && pokeInfo.sprites.front_default!==null &&
                 <div className={`card-container ${isTablet&&"tablet"} ${isDesktop&&"desktop"}`} onClick={()=>setPokeView(!pokeView)} style={{backgroundColor:colorsType.find(e=>e.name===pokeInfo.types[0].type.name).color}}>
                     <div className="fondo">
                         <h2>{pokeInfo.name[0].toUpperCase()}{pokeInfo.name.slice(1)}</h2>
