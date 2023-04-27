@@ -4,7 +4,7 @@ import { colorsType } from '../context/colors';
 import CardPokeView from "./CardPokeView";
 
 export default function CardPoke({poke,i,generations,types}){
-    const { apiPoke,isTablet,isDesktop } = useContext(UseApiContext)
+    const { apiPoke,isTablet } = useContext(UseApiContext)
 
     const [pokeInfo,setPokeInfo]=useState([])
     const [pokeView,setPokeView]=useState(false)

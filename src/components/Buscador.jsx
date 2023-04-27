@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { UseApiContext } from "../context/ApiContext";
 
 export default function Buscador({setTypes,setGenerations,setBuscando,lupa,pokesFilterBuscador,setPokesFilterBuscador}){
-    const { isTablet, isDesktop } = useContext(UseApiContext)
+    const { isTablet } = useContext(UseApiContext)
 
     const buscador=async()=>{
         await setPokesFilterBuscador([])

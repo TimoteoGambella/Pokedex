@@ -8,7 +8,7 @@ import FourthInfo from "./infoCards/FourthInfo";
 import { UseApiContext } from "../context/ApiContext"
 
 export default function CardPokeView({pokeInfo,setPokeView}){
-    const { isTablet,isDesktop } = useContext(UseApiContext)
+    const { isTablet } = useContext(UseApiContext)
 
     const [carga,setCarga]=useState(false)
 

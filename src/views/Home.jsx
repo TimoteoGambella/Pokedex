@@ -5,7 +5,7 @@ import { UseApiContext } from "../context/ApiContext";
 
 export default function Home(){
     const navigate=useNavigate()
-    const {isTablet,isDesktop}=useContext(UseApiContext)
+    const {isTablet}=useContext(UseApiContext)
 
     return(
         <div className={`home-container ${isTablet&&"tablet"}`}>

@@ -4,7 +4,7 @@ import CardPoke from "./CardPoke"
 import loader from "../assets/load1.gif"
 
 export default function CardsContent({pokesFilter,generations,types,buscando,pokesFilterBuscador}){
-    const {allPokes,isTablet,isDesktop}=useContext(UseApiContext)
+    const {allPokes,isTablet}=useContext(UseApiContext)
 
     return(
         <div className={`cards-container ${isTablet&&"tablet"}`}>

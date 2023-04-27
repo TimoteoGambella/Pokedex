@@ -3,7 +3,7 @@ import { UseApiContext } from "../context/ApiContext"
 
 
 export default function Paginador({setBuscando}){
-    const { allPokes, setAllPokes, isTablet, isDesktop } = useContext(UseApiContext)
+    const { allPokes, setAllPokes, isTablet } = useContext(UseApiContext)
 
     return(
         <>
