@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { colorsType } from '../context/colors';
 import close from "../assets/closeIcon.svg"
 import FirstInfo from "./infoCards/FirstInfo";
 import SecondInfo from "./infoCards/SecondInfo";
 import ThirdInfo from "./infoCards/ThirdInfo";
 import FourthInfo from "./infoCards/FourthInfo";
+import { UseApiContext } from "../context/ApiContext"
 
 export default function CardPokeView({pokeInfo,setPokeView}){
+    const { isTablet,isDesktop } = useContext(UseApiContext)
+
     const [carga,setCarga]=useState(false)
     const [cargaOverflow,setCargaOverflow]=useState(true)
 
@@ -23,7 +26,7 @@ export default function CardPokeView({pokeInfo,setPokeView}){
     }, []);
 
     return(
-        <div className={`cardPokeView-container ${carga?"open":"close"}`}
+        <div className={`cardPokeView-container ${carga?"open":"close"} ${isTablet&&!isDesktop?"tablet":isDesktop?"desktop":""}`}
             style={{
                 background:`linear-gradient(180deg, ${colorsType.find(e=>e.name===pokeInfo.types[0].type.name).color} 20%, black)`,
                 overflow:cargaOverflow?"hidden":"scroll"
@@ -36,8 +39,17 @@ export default function CardPokeView({pokeInfo,setPokeView}){
                 }, 2000);
             }}/>
 
-            <h1>{pokeInfo.name[0].toUpperCase()}{pokeInfo.name.slice(1)}</h1>
-            <img src={pokeInfo.sprites.front_default} alt="FOTO" className="pokeFoto"/>
+            {!isTablet ?
+                <>
+                    <h1>{pokeInfo.name[0].toUpperCase()}{pokeInfo.name.slice(1)}</h1>
+                    <img src={pokeInfo.sprites.front_default} alt="FOTO" className="pokeFoto"/>
+                </>
+                :
+                <div style={{display:"flex",alignItems:"center"}}>
+                    <h1>{pokeInfo.name[0].toUpperCase()}{pokeInfo.name.slice(1)}</h1>
+                    <img src={pokeInfo.sprites.front_default} alt="FOTO" className="pokeFoto"/>
+                </div>
+            }
 
             <FirstInfo pokeInfo={pokeInfo}/>
             <SecondInfo pokeInfo={pokeInfo}/>

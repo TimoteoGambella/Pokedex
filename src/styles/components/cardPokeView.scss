@@ -52,4 +52,19 @@
     .pokeFoto{
         width: 240px;
     }
+
+
+    &.tablet{
+        padding-top: 15px;
+        h1{
+            font-size: 50px;
+            margin-top: 0px;
+        }
+        .closeIcon{
+            width: 50px;
+        }
+        .pokeFoto{
+            width: 280px;
+        }
+    }
 }
