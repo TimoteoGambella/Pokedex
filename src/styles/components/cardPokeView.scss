@@ -70,4 +70,17 @@
             width: 280px;
         }
     }
+
+    &.desktop{
+        padding-top: 30px;
+        h1{
+            font-size: 70px;
+        }
+        .closeIcon{
+            width: 60px;
+        }
+        .pokeFoto{
+            width: 320px;
+        }
+    }
 }

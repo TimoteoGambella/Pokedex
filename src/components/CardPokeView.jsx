@@ -8,7 +8,7 @@ import FourthInfo from "./infoCards/FourthInfo";
 import { UseApiContext } from "../context/ApiContext"
 
 export default function CardPokeView({pokeInfo,setPokeView}){
-    const { isTablet } = useContext(UseApiContext)
+    const { isTablet, isDesktop } = useContext(UseApiContext)
 
     const [carga,setCarga]=useState(false)
 
@@ -22,7 +22,7 @@ export default function CardPokeView({pokeInfo,setPokeView}){
     }, []);
 
     return(
-        <div className={`cardPokeView-container ${carga?"open":"close"} ${isTablet&&"tablet"}`}
+        <div className={`cardPokeView-container ${carga?"open":"close"} ${isTablet&&"tablet"} ${isDesktop&&"desktop"}`}
             style={{
                 background:`linear-gradient(180deg, ${colorsType.find(e=>e.name===pokeInfo.types[0].type.name).color} 20%, black)`,
                 overflow:"hidden"
