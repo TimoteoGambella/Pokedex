@@ -141,7 +141,7 @@ export default function Pokedex({openMenu}){
                 }
 
 
-                <CardsContent pokesFilterBuscador={pokesFilterBuscador} pokesFilter={pokesFilter} generations={generations} types={types} buscando={buscando}/>
+                <CardsContent setPokesFilter={setPokesFilter} pokesFilterBuscador={pokesFilterBuscador} pokesFilter={pokesFilter} generations={generations} types={types} buscando={buscando}/>
 
 
                 {pokesFilter.length===0 && pokesFilterBuscador.length===0 && allPokes.length!==0 &&
