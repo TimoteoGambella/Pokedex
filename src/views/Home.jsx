@@ -8,7 +8,7 @@ export default function Home(){
     const {isTablet,isDesktop}=useContext(UseApiContext)
 
     return(
-        <div className={`home-container ${isTablet&&!isDesktop?"tablet":isDesktop?"desktop":""}`}>
+        <div className={`home-container ${isTablet&&"tablet"}`}>
             <img src={banner} alt="BANNER"/>
             <h2><span>Find</span> all your favorite <span>Pokemon</span></h2>
             <h3>You can know the type of Pokemon, its strengths, disadvantages and abilities</h3>

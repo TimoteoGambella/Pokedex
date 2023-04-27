@@ -74,7 +74,7 @@ export default function Pokedex({openMenu}){
     }
 
     return(
-            <div className={`pokedex-container ${isTablet&&!isDesktop?"tablet":isDesktop?"desktop":""}`}>
+            <div className={`pokedex-container ${isTablet&&"tablet"}`}>
                 <p className="banner">800 <span>Pokemons</span> for you to choose your favorite</p>
 
                 <Buscador setTypes={setTypes} setGenerations={setGenerations} setBuscando={setBuscando} lupa={lupa} pokesFilterBuscador={pokesFilterBuscador} setPokesFilterBuscador={setPokesFilterBuscador}/>

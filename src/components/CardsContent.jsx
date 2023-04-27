@@ -7,7 +7,7 @@ export default function CardsContent({pokesFilter,generations,types,buscando,pok
     const {allPokes,isTablet,isDesktop}=useContext(UseApiContext)
 
     return(
-        <div className={`cards-container ${isTablet&&!isDesktop?"tablet":isDesktop?"desktop":""}`}>
+        <div className={`cards-container ${isTablet&&"tablet"}`}>
             {(allPokes.length===0 || buscando) ?
                 <div className="loader">
                     <img src={loader} alt="LOADER"/>

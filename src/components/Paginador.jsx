@@ -7,7 +7,7 @@ export default function Paginador({setBuscando}){
 
     return(
         <>
-            <div className={`paginador ${isTablet&&!isDesktop?"tablet":isDesktop?"desktop":""}`}>
+            <div className={`paginador ${isTablet&&"tablet"}`}>
                 <p  style={{padding:allPokes.previous?"10px 20px":""}}
                     onClick={async()=>{
                         document.getElementById("buscador").value=""

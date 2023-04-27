@@ -39,7 +39,7 @@ export default function CardPoke({poke,i,generations,types}){
     return(
         <>
             {pokeInfo.length!==0 &&
-                <div className={`card-container ${isTablet&&!isDesktop?"tablet":isDesktop?"desktop":""}`} onClick={()=>setPokeView(!pokeView)} style={{backgroundColor:colorsType.find(e=>e.name===pokeInfo.types[0].type.name).color}}>
+                <div className={`card-container ${isTablet&&"tablet"}`} onClick={()=>setPokeView(!pokeView)} style={{backgroundColor:colorsType.find(e=>e.name===pokeInfo.types[0].type.name).color}}>
                     <div className="fondo">
                         <h2>{pokeInfo.name[0].toUpperCase()}{pokeInfo.name.slice(1)}</h2>
                         <div className="stats">

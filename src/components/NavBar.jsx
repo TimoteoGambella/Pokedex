@@ -14,7 +14,7 @@ export default function NavBar({openMenu,setOpenMenu}){
     }
 
     return(
-        <div className={`navbar-container ${isTablet&&!isDesktop?"tablet":isDesktop?"desktop":""}`}>
+        <div className={`navbar-container ${isTablet&&"tablet"}`}>
             <img onClick={()=>navegador("")} src={logo} alt="LOGO"/>
 
             {!isTablet && !isDesktop ?

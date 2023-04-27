@@ -22,7 +22,7 @@ export default function CardPokeView({pokeInfo,setPokeView}){
     }, []);
 
     return(
-        <div className={`cardPokeView-container ${carga?"open":"close"} ${isTablet&&!isDesktop?"tablet":isDesktop?"desktop":""}`}
+        <div className={`cardPokeView-container ${carga?"open":"close"} ${isTablet&&"tablet"}`}
             style={{
                 background:`linear-gradient(180deg, ${colorsType.find(e=>e.name===pokeInfo.types[0].type.name).color} 20%, black)`,
                 overflow:"hidden"

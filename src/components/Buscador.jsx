@@ -35,7 +35,7 @@ export default function Buscador({setTypes,setGenerations,setBuscando,lupa,pokes
 
     return(
         <>
-            <div className={`buscador ${isTablet&&!isDesktop?"tablet":isDesktop?"desktop":""}`}>
+            <div className={`buscador ${isTablet&&"tablet"}`}>
                 <div>
                     <input id="buscador" type="text" placeholder="Encuentra tu pokemon..." onKeyPress={(e)=>{
                         if(e.key==="Enter" && e.target.value.length>=3){
@@ -46,7 +46,7 @@ export default function Buscador({setTypes,setGenerations,setBuscando,lupa,pokes
                 </div>
             </div>
             {pokesFilterBuscador.length!==0 &&
-                <p className={`limpiarBuscador ${isTablet&&!isDesktop?"tablet":isDesktop?"desktop":""}`} onClick={()=>{document.getElementById("buscador").value="";setPokesFilterBuscador([])}}>Limpiar buscador</p>
+                <p className={`limpiarBuscador ${isTablet&&"tablet"}`} onClick={()=>{document.getElementById("buscador").value="";setPokesFilterBuscador([])}}>Limpiar buscador</p>
             }
         </>
     )
