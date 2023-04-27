@@ -97,7 +97,7 @@ export default function Pokedex({openMenu}){
                         />
                     </>
                     :   
-                    <div className="filtrosT">
+                    <div className={`filtrosT ${isDesktop&&"desktop"}`}>
                         {allTypes.length!==0 && renderInput &&
                             <Select
                                 className="inputsFilters"

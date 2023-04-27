@@ -41,6 +41,28 @@
                 }
             }
         }
+
+        &.desktop{
+            justify-content: flex-start;
+            max-width: 1080px;
+            padding-left: 80px;
+            .inputsFilters{
+                margin-right: 40px;
+                margin-left: 40px;
+                padding: 5px 10px;
+                width: 180px;
+                div{
+                    input,span{
+                        font-size: 20px;
+                    }
+                }
+            }
+            p{
+                margin-left: 40px;
+                font-size: 20px;
+                letter-spacing: 2px;
+            }
+        }
     }
     .filtros-menu{
         position: fixed;
