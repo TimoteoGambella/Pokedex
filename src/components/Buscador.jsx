@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { UseApiContext } from "../context/ApiContext";
 
 export default function Buscador({setTypes,setGenerations,setBuscando,lupa,pokesFilterBuscador,setPokesFilterBuscador}){
-    const { isTablet } = useContext(UseApiContext)
+    const { isTablet, isDesktop } = useContext(UseApiContext)
 
     const buscador=async()=>{
         await setPokesFilterBuscador([])
@@ -35,9 +35,9 @@ export default function Buscador({setTypes,setGenerations,setBuscando,lupa,pokes
 
     return(
         <>
-            <div className={`buscador ${isTablet&&"tablet"}`}>
+            <div className={`buscador ${isTablet&&"tablet"} ${isDesktop&&"desktop"}`}>
                 <div>
-                    <input id="buscador" type="text" placeholder="Encuentra tu pokemon..." onKeyPress={(e)=>{
+                    <input id="buscador" type="text" placeholder="Encuentra tu pokemon ..." onKeyPress={(e)=>{
                         if(e.key==="Enter" && e.target.value.length>=3){
                             buscador()
                         }
