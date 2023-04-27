@@ -9,7 +9,7 @@ import Paginador from "../components/Paginador";
 import Select from "react-dropdown-select";
 
 export default function Pokedex({openMenu}){
-    const { allPokes,allTypes,allGenerations,isTablet,apiPoke } = useContext(UseApiContext)
+    const { allPokes,allTypes,allGenerations,isTablet,apiPoke,isDesktop } = useContext(UseApiContext)
 
     const [openFilters,setOpenFilters]=useState(false)
     const [lupa,setLupa]=useState(false)
@@ -74,8 +74,8 @@ export default function Pokedex({openMenu}){
     }
 
     return(
-            <div className={`pokedex-container ${isTablet&&"tablet"}`}>
-                <p className="banner">800 <span>Pokemons</span> for you to choose your favorite</p>
+            <div className={`pokedex-container ${isTablet&&"tablet"} ${isDesktop&&"desktop"}`}>
+                <p className="banner">+1000 <span>Pokemons</span> for you to choose your favorite</p>
 
                 <Buscador setTypes={setTypes} setGenerations={setGenerations} setBuscando={setBuscando} lupa={lupa} pokesFilterBuscador={pokesFilterBuscador} setPokesFilterBuscador={setPokesFilterBuscador}/>
 
