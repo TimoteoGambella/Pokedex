@@ -29,7 +29,7 @@ export default function CardPokeView({pokeInfo,setPokeView}){
         <div className={`cardPokeView-container ${carga?"open":"close"} ${isTablet&&!isDesktop?"tablet":isDesktop?"desktop":""}`}
             style={{
                 background:`linear-gradient(180deg, ${colorsType.find(e=>e.name===pokeInfo.types[0].type.name).color} 20%, black)`,
-                overflow:cargaOverflow?"hidden":"scroll"
+                overflow:"hidden"
             }}
         >
             <img src={close} alt="CROSS" className="closeIcon" onClick={()=>{
