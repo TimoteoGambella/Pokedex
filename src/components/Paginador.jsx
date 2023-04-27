@@ -3,11 +3,11 @@ import { UseApiContext } from "../context/ApiContext"
 
 
 export default function Paginador({setBuscando}){
-    const { allPokes, setAllPokes } = useContext(UseApiContext)
+    const { allPokes, setAllPokes, isTablet, isDesktop } = useContext(UseApiContext)
 
     return(
         <>
-            <div className="paginador">
+            <div className={`paginador ${isTablet&&!isDesktop?"tablet":isDesktop?"desktop":""}`}>
                 <p  style={{padding:allPokes.previous?"10px 20px":""}}
                     onClick={async()=>{
                         document.getElementById("buscador").value=""

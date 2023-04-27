@@ -135,7 +135,7 @@ export default function Pokedex({openMenu}){
                                     setGenerations("")
                                     setRenderInput(false)
                                 }
-                            }} style={{textDecoration:"underline"}}>Limpiar Filtros</p>
+                            }} style={{textDecoration:"underline",cursor:"pointer"}}>Limpiar Filtros</p>
                         }
                     </div>
                 }

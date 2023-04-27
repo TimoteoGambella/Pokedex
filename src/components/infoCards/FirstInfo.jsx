@@ -5,7 +5,7 @@ export default function FirstInfo({pokeInfo}){
     return(
         <div className="firstInfo">
             <div className="box1">
-                {pokeInfo.id}
+                <p>{pokeInfo.id}</p>
             </div>
             <div className="box2">
                 {pokeInfo.types.map((obj,i)=>{

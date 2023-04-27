@@ -1,8 +1,11 @@
 import { SvgIcon } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { UseApiContext } from "../context/ApiContext";
 
 export default function Buscador({setTypes,setGenerations,setBuscando,lupa,pokesFilterBuscador,setPokesFilterBuscador}){
+    const { isTablet, isDesktop } = useContext(UseApiContext)
 
     const buscador=async()=>{
         await setPokesFilterBuscador([])
@@ -32,7 +35,7 @@ export default function Buscador({setTypes,setGenerations,setBuscando,lupa,pokes
 
     return(
         <>
-            <div className="buscador">
+            <div className={`buscador ${isTablet&&!isDesktop?"tablet":isDesktop?"desktop":""}`}>
                 <div>
                     <input id="buscador" type="text" placeholder="Encuentra tu pokemon..." onKeyPress={(e)=>{
                         if(e.key==="Enter" && e.target.value.length>=3){
@@ -43,7 +46,7 @@ export default function Buscador({setTypes,setGenerations,setBuscando,lupa,pokes
                 </div>
             </div>
             {pokesFilterBuscador.length!==0 &&
-                <p className="limpiarBuscador" onClick={()=>{document.getElementById("buscador").value="";setPokesFilterBuscador([])}}>Limpiar buscador</p>
+                <p className={`limpiarBuscador ${isTablet&&!isDesktop?"tablet":isDesktop?"desktop":""}`} onClick={()=>{document.getElementById("buscador").value="";setPokesFilterBuscador([])}}>Limpiar buscador</p>
             }
         </>
     )
