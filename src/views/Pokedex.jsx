@@ -41,13 +41,16 @@ export default function Pokedex({openMenu}){
             setRenderInput(true)
             buscadorFiltros()
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [openMenu,lupa,FT,renderInput])
+    
+    useEffect(() => {
         if(isTablet || !isTablet){
             setTypes("")
             setGenerations("")
             setPokesFilter([])
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [openMenu,lupa,FT,renderInput,isTablet])
+    }, [isTablet])
 
     const buscadorFiltros=async()=>{
         await setBuscando(true)
