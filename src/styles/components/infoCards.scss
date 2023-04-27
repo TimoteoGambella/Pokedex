@@ -151,4 +151,70 @@
             max-width: 580px;
         }
     }
+
+    &.desktop{
+        .firstInfo{
+            max-width: 800px;
+            margin-top: 10px;
+            .box1{
+                padding: 6px 15px;
+                p{
+                    font-size: 28px;
+                }
+            }
+            .box2{
+                div{
+                    padding: 15px 20px;
+                    font-size: 32px;
+                }
+            }
+        }
+        .secondInfo{
+            max-width: 750px;
+            margin-top: 25px;
+            p{
+                font-size: 36px;
+                font-weight: 700;
+            }
+            div{
+                p{
+                    font-size: 30px;
+                    font-weight: 400;
+                    margin-top: 10px;
+                    margin-left: 5px;
+                }
+            }
+        }
+        .thirdInfo{
+            max-width: 750px;
+            div{
+                .title{
+                    font-size: 36px;
+                }
+                div{
+                    margin-bottom: 30px;
+                    p{
+                        font-size: 30px;
+                        margin-top: 15px;
+                        margin-bottom: 15px;
+                    }
+                }
+            }
+        }
+        .fourthInfo{
+            max-width: 780px;
+            margin-top: 15px;
+            div{
+                .circle{
+                    font-size: 32px;
+                    padding: 14px 15px;
+                }
+                .stat{
+                    font-size: 28px;
+                    margin-top: 10px;
+                    margin-bottom: 15px;
+                }
+            }
+        }
+    }
 }
