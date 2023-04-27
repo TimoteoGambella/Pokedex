@@ -2,12 +2,15 @@ import { Fragment, useContext } from "react"
 import { UseApiContext } from "../context/ApiContext"
 import CardPoke from "./CardPoke"
 import loader from "../assets/load1.gif"
+import { useMediaQuery } from "@mui/material"
 
 export default function CardsContent({pokesFilter,generations,types,buscando,pokesFilterBuscador}){
     const {allPokes,isTablet,isDesktop}=useContext(UseApiContext)
 
+    const maxContent=useMediaQuery("(min-width:1900px)")
+
     return(
-        <div className={`cards-container ${isTablet&&"tablet"} ${isDesktop&&"desktop"}`}>
+        <div className={`cards-container ${isTablet&&"tablet"} ${isDesktop&&"desktop"} ${maxContent&&"maxContent"}`}>
             {(allPokes.length===0 || buscando) ?
                 <div className="loader">
                     <img src={loader} alt="LOADER"/>

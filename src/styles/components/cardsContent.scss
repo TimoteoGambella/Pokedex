@@ -14,4 +14,8 @@
     &.desktop{
         margin: 35px 40px 30px 40px;
     }
+    &.maxContent{
+        margin: 35px auto;
+        max-width: 1800px;
+    }
 }

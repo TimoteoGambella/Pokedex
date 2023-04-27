@@ -1,9 +1,7 @@
 .card-container{
     width: 337px;
     height: 140px;
-    margin: 0px 10px;
-    margin-top: 12px;
-    margin-bottom: 12px;
+    margin: 12px 10px;
     filter: drop-shadow(4px 4px 4px rgba(33, 33, 33, 0.1));
     background: $white-color;
     border-radius: 8px;
@@ -92,6 +90,39 @@
         }
         img{
             width: 130px;
+        }
+    }
+
+
+    &.desktop{
+        width: 410px;
+        height: 160px;
+        margin: 15px 20px;
+        .fondo{
+            width: 240px;
+            h2{
+                font-size: 22px;
+            }
+            .stats{
+                .circle{
+                    div{
+                        font-size: 20px;
+                    }
+                    p{
+                        font-size: 22px;
+                    }
+                }
+            }
+            .types{
+                margin-top: 10px;
+                div{
+                    font-size: 22px;
+                    padding: 8px 12px;
+                }
+            }
+        }
+        img{
+            width: 160px;
         }
     }
 }
