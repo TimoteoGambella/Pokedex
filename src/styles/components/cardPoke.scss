@@ -82,4 +82,15 @@
         height: fit-content;
         z-index: 9;
     }
+
+
+    &.tablet{
+        width: 350px;
+        h2{
+            font-size: 20px;
+        }
+        img{
+            width: 130px;
+        }
+    }
 }
