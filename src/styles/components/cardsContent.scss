@@ -5,4 +5,13 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    
+
+    &.tablet{
+        margin: 35px 40px 30px 40px;
+    }
+
+    &.desktop{
+        margin: 35px 40px 30px 40px;
+    }
 }
