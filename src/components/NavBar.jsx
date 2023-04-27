@@ -18,7 +18,7 @@ export default function NavBar({openMenu,setOpenMenu}){
     return(
         <>
             {(href==="/"||href==="/pokedex") && 
-                <div className={`navbar-container ${isTablet&&"tablet"}`}>
+                <div className={`navbar-container ${isTablet&&"tablet"} ${isDesktop&&"desktop"}`}>
                     <img onClick={()=>navegador("")} src={logo} alt="LOGO"/>
 
                     {!isTablet && !isDesktop ?

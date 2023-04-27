@@ -78,4 +78,19 @@
             }
         }
     }
+    &.desktop{
+        padding: 13px 150px;
+        img{
+            width: 157px;
+            height: 63px;
+        }
+        div{
+            margin-left: 300px;
+            p{
+                padding-bottom: 15px;
+                font-size: 25px;
+                line-height: 29px;
+            }
+        }
+    }
 }
