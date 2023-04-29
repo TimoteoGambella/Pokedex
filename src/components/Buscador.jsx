@@ -8,29 +8,31 @@ export default function Buscador({setTypes,setGenerations,setBuscando,lupa,pokes
     const { isTablet, isDesktop } = useContext(UseApiContext)
 
     const buscador=async()=>{
-        await setPokesFilterBuscador([])
-        await setBuscando(true)
-        await fetch(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=99999`).then((res)=>res.json().then(async(res)=>{
-            let newArray=[]
-            for (const key in res.results) {
-                if (res.results[key].name.indexOf(document.getElementById("buscador").value.toLowerCase())!==-1) {
-                    newArray.push(res.results[key])
+        if(document.getElementById("buscador").value!==""){
+            await setPokesFilterBuscador([])
+            await setBuscando(true)
+            await fetch(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=99999`).then((res)=>res.json().then(async(res)=>{
+                let newArray=[]
+                for (const key in res.results) {
+                    if (res.results[key].name.indexOf(document.getElementById("buscador").value.toLowerCase())!==-1) {
+                        newArray.push(res.results[key])
+                    }
                 }
-            }
-            if(newArray.length===0){
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Ops...',
-                    text: 'We did not find results. Try different name.',
-                })
-                document.getElementById("buscador").value=""
-            }else{
-                setTypes("")
-                setGenerations("")
-                setPokesFilterBuscador(newArray)
-            }
-        }))
-        setBuscando(false)
+                if(newArray.length===0){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Ops...',
+                        text: 'We did not find results. Try different name.',
+                    })
+                    document.getElementById("buscador").value=""
+                }else{
+                    setTypes("")
+                    setGenerations("")
+                    setPokesFilterBuscador(newArray)
+                }
+            }))
+            setBuscando(false)
+        }
     }
 
     return(
