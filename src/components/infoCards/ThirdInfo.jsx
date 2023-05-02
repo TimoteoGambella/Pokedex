@@ -6,7 +6,7 @@ export default function ThirdInfo({pokeInfo}){
     return(
         <div className="thirdInfo">
             <div>
-                <p className="title">Helthy Points</p>
+                <p className="title">Healthy Points</p>
                 <div>
                     <p>{pokeInfo.stats[0].base_stat}</p>
                     <ProgressBar height="8px" labelColor="transparent" baseBgColor="#F6F7F9" bgColor="linear-gradient(270deg, #64D368 0.15%, #64D368 70.88%)" completed={`${Math.trunc(pokeInfo.stats[0].base_stat/hp_base_max*100)}`}/>
